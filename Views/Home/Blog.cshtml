@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Blog | ElectroScan AI — Insights & Updates</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+   
+</head>
+<body>
+
+    <main>
+        <div class="blog-hero">
+            <div class="container">
+                <div class="hero-tag reveal"><i class="fas fa-newspaper"></i> LATEST INSIGHTS</div>
+                <h1 class="reveal" style="font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em;">Electrical Safety Blog</h1>
+                <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Expert insights, industry news, and AI innovation for electrical professionals</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container reveal">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search articles...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="categories reveal">
+                <button class="category-btn active" data-cat="all">All</button>
+                <button class="category-btn" data-cat="AI Technology">AI Technology</button>
+                <button class="category-btn" data-cat="Safety Tips">Safety Tips</button>
+                <button class="category-btn" data-cat="Industry News">Industry News</button>
+                <button class="category-btn" data-cat="Case Studies">Case Studies</button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid reveal" id="blogGrid"></div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <div class="container newsletter-section reveal">
+            <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--mint); margin-bottom: 16px; display: inline-block;"></i>
+            <h2 style="font-size: 1.6rem;">Subscribe to Our Newsletter</h2>
+            <p style="opacity: 0.8; max-width: 480px; margin: 12px auto;">Get the latest articles, industry insights, and AI updates delivered to your inbox.</p>
+            <div class="newsletter-form">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email">
+                <button class="btn-premium" style="background: white; color: var(--pine);" id="newsletterBtn">Subscribe</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i><span id="toastText">Message</span></div>
+
+   
+</body>
+</html>

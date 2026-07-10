@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ElectroScanAI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-microchip"></i></div>
+                    <span style="color:#1F8A6B; background:none;">ElectroScan AI</span>
+                </div>
+                <div class="nav-links">
+                    <a asp-action="Index" asp-controller="Home">Home</a>
+                    <a asp-action="About" asp-controller="Home">About</a>
+                    <a asp-action="Service" asp-controller="Home">Services</a>
+                    <a asp-action="Contact" asp-controller="Home">Contact</a>
+                    <a asp-action="Login" asp-controller="Home" class="btn-premium" style="padding:8px 22px; font-size:0.85rem; background-color:#1F8A6B; color:#fff; border-radius:4px;">Login</a>
+                </div>
+              
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- FIXED FOOTER START -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-microchip"></i>
+                        <span>ElectroScan<span style="color:#1F8A6B;">AI</span></span>
+                    </div>
+                    <p class="footer-description">AI-driven electrical inspections for zero-risk operations.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Company -->
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a asp-action="About" asp-controller="Home">About Us</a></li>
+                        <li><a asp-action="Careers" asp-controller="Home">Careers</a></li>
+                        <li><a asp-action="Pricing" asp-controller="Home">Pricing</a></li>
+                        <li><a asp-action="Support" asp-controller="Home">Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Solutions -->
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a asp-action="AI_Scanner" asp-controller="Home" >AI Scanner</a></li>
+                        <li><a asp-action="Calculator" asp-controller="Home">Load Calculation</a></li>
+                        <li><a asp-action="Services" asp-controller="Home" asp-fragment="safety-reports">Safety Reports</a></li>
+                                <li><a asp-action="Testimonials" asp-controller="Home">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Resources & Newsletter -->
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a asp-action="System_Monitor" asp-controller="Home">Knowledge Base</a></li>
+                        <li><a asp-action="Market_Rates" asp-controller="Home">Compliance Guide</a></li>
+                        <li><a asp-action="Blog" asp-controller="Home">Blog</a></li>
+                        <li><a asp-action="FAQ" asp-controller="Home">FAQ</a></li>
+                                <li><a asp-action="Reports" asp-controller="Home">Report</a></li>
+                                <li><a asp-action="Analytics" asp-controller="Home">Analytics</a></li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4 style="margin-top: 20px;">Newsletter</h4>
+                        <div class="subscribe-flex">
+                            <input type="email" id="footerEmail" placeholder="Your email address">
+                            <button type="button" id="footerSubscribeBtn" class="btn-small">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Bar -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 ElectroScanAI — Smarter Scans. Safer Systems. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a asp-action="Privacy" asp-controller="Home">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a asp-action="Terms" asp-controller="Home">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a asp-action="Cookies" asp-controller="Home">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FIXED FOOTER END -->
+    <!-- Toast Notification -->
+    <div id="toastMsg" style="display:none; position:fixed; bottom:20px; right:20px; z-index:9999;">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,93 @@
+﻿@model Electroscann_ai.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login - ElectroScan AI";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ElectroScan AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0B2B26 0%, #145C4E 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .login-container { max-width: 480px; width: 100%; }
+        .login-card { background: white; border-radius: 40px; padding: 48px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .logo { text-align: center; margin-bottom: 32px; }
+        .logo h1 { font-size: 1.8rem; background: linear-gradient(135deg, #0B2B26, #1F8A6B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #1E293B; }
+        .form-group input { width: 100%; padding: 14px 16px; border: 1.5px solid #E2E8F0; border-radius: 20px; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+        .form-group input:focus { outline: none; border-color: #1F8A6B; box-shadow: 0 0 0 3px rgba(31,138,107,0.1); }
+        .checkbox-group { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+        .btn-login { width: 100%; background: #1F8A6B; color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
+        .btn-login:hover { background: #156B54; transform: translateY(-2px); }
+        .register-link { text-align: center; margin-top: 24px; padding-top: 24px; border-top: 1px solid #E2E8F0; }
+        .register-link a { color: #1F8A6B; text-decoration: none; font-weight: 600; }
+        .alert { padding: 12px 16px; border-radius: 16px; margin-bottom: 20px; }
+        .alert-danger { background: #FEE2E2; color: #991B1B; border-left: 4px solid #EF4444; }
+        .text-muted { color: #64748B; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <i class="fas fa-microchip" style="font-size: 2.5rem; color: #1F8A6B;"></i>
+                <h1>ElectroScan AI</h1>
+                <p class="text-muted">Sign in to your account</p>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div>@error.ErrorMessage</div>
+                    }
+                </div>
+            }
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert" style="background: #DCFCE7; color: #166534;">@TempData["Success"]</div>
+            }
+
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label asp-for="Email">Email Address</label>
+                    <input asp-for="Email" type="email" placeholder="you@example.com">
+                    <span asp-validation-for="Email" class="text-muted" style="font-size:0.75rem;"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password" type="password" placeholder="••••••••">
+                    <span asp-validation-for="Password" class="text-muted" style="font-size:0.75rem;"></span>
+                </div>
+
+                <div class="checkbox-group">
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input asp-for="RememberMe" type="checkbox"> Remember me
+                    </label>
+                    <a href="@Url.Action("ForgotPassword", "Account")" style="color: #1F8A6B; text-decoration: none;">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
+
+                <div class="register-link">
+                    <p>Don't have an account? <a href="@Url.Action("Register", "Account")">Create an account</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

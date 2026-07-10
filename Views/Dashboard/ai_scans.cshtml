@@ -1,0 +1,40 @@
+@{
+    Layout = "_DashboardLayout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Scan Reports | ElectroScan AI Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="~/css/site.css">
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+<div class="admin-container">
+    
+    <main class="main-content">
+        <div class="top-bar"><div class="page-title"><h1>AI Scan Reports</h1><p>Monitor AI scan analytics</p></div><div class="user-menu"><button class="notification-btn"><i class="fas fa-bell"></i><span class="notification-badge">4</span></button><div class="user-avatar"><i class="fas fa-user-shield"></i></div></div></div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-value">2,845</div><div class="stat-label">Total Scans</div></div>
+            <div class="stat-card"><div class="stat-value">156</div><div class="stat-label">Faults Detected</div></div>
+            <div class="stat-card"><div class="stat-value">96%</div><div class="stat-label">Avg Accuracy</div></div>
+        </div>
+        <div class="table-card">
+            <div class="table-header"><h3><i class="fas fa-microscope"></i> Recent AI Scans</h3></div>
+            <table class="data-table">
+                <thead><tr><th>Scan ID</th><th>User</th><th>Date</th><th>Findings</th><th>Risk Level</th><th>Report</th></tr></thead>
+                <tbody>
+                    <tr><td>#SCAN-245</td><td>Ahmed Raza</td><td>2026-06-09</td><td>Phase Wire OK, Neutral OK</td><td><span class="status-badge status-low">Low</span></td><td><button class="btn-outline" style="padding:4px 12px">View</button></td></tr>
+                    <tr><td>#SCAN-244</td><td>Tech Solutions</td><td>2026-06-08</td><td>Faulty Wire Detected</td><td><span class="status-badge status-high">High</span></td><td><button class="btn-outline" style="padding:4px 12px">View</button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>System Monitor | ElectroScan AI — Infrastructure Health</title>
+  <!-- Google Fonts + premium typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="electroscann-ai.css" />
+  <script src="electroscann-ai.js" defer></script>
+</head>
+<body>
+
+
+<main>
+  <div class="container">
+    <div class="admin-header reveal">
+      <div>
+        <div class="admin-title">📊 System Monitor</div>
+        <p style="color: var(--text-muted);">Real-time infrastructure health, performance metrics, and system events</p>
+      </div>
+      <div class="status-badge"><div class="status-dot"></div><span>All Systems Operational</span></div>
+    </div>
+
+    <!-- Status Cards -->
+    <div class="status-grid reveal">
+      <div class="status-card">
+        <div class="status-header"><span class="status-name">Server Uptime</span><div class="status-icon"><i class="fas fa-server"></i></div></div>
+        <div class="status-value" style="color: var(--electric-green);">99.99%</div>
+        <div class="status-detail">Last 30 days • 2 min downtime</div>
+      </div>
+      <div class="status-card">
+        <div class="status-header"><span class="status-name">AI Processing</span><div class="status-icon"><i class="fas fa-brain"></i></div></div>
+        <div class="status-value" style="color: var(--electric-green);">2,847</div>
+        <div class="status-detail">Scans/hour • Queue: 12</div>
+      </div>
+      <div class="status-card">
+        <div class="status-header"><span class="status-name">Storage Usage</span><div class="status-icon"><i class="fas fa-hdd"></i></div></div>
+        <div class="status-value warning-text">78%</div>
+        <div class="status-detail">1.2TB / 1.5TB used</div>
+      </div>
+      <div class="status-card">
+        <div class="status-header"><span class="status-name">API Response</span><div class="status-icon"><i class="fas fa-bolt"></i></div></div>
+        <div class="status-value" style="color: var(--electric-green);">45ms</div>
+        <div class="status-detail">Average latency • 99th: 120ms</div>
+      </div>
+    </div>
+
+    <!-- Charts Grid -->
+    <div class="charts-grid reveal">
+      <div class="chart-card">
+        <div class="chart-header"><h3 class="chart-title">CPU & Memory Usage</h3><span style="color: var(--text-muted); font-size:0.8rem;">Real-time</span></div>
+        <canvas id="resourceChart" height="150" style="max-height: 220px;"></canvas>
+      </div>
+      <div class="chart-card">
+        <div class="chart-header"><h3 class="chart-title">Network Traffic</h3><span style="color: var(--text-muted); font-size:0.8rem;">MB/s</span></div>
+        <canvas id="networkChart" height="150" style="max-height: 220px;"></canvas>
+      </div>
+    </div>
+
+    <!-- System Events Log -->
+    <div class="log-card reveal">
+      <div class="log-header"><h3 class="chart-title">System Events</h3><button id="viewAllLogsBtn" style="background: #F1F9F5; border: none; padding: 8px 20px; border-radius: 40px; font-size:0.8rem; cursor:pointer;">View All</button></div>
+      <div class="log-entry"><div class="log-icon"><i class="fas fa-check"></i></div><div class="log-content"><h4>AI Model Updated</h4><p>Version 2.5.1 deployed successfully with 15% accuracy improvement</p></div><div class="log-time">2 min ago</div></div>
+      <div class="log-entry"><div class="log-icon warning"><i class="fas fa-exclamation-triangle"></i></div><div class="log-content"><h4>High Memory Usage Warning</h4><p>Server cluster-02 memory usage exceeded 85% threshold</p></div><div class="log-time">15 min ago</div></div>
+      <div class="log-entry"><div class="log-icon"><i class="fas fa-upload"></i></div><div class="log-content"><h4>Backup Completed</h4><p>Daily backup completed successfully. Size: 847GB</p></div><div class="log-time">1 hour ago</div></div>
+      <div class="log-entry"><div class="log-icon error"><i class="fas fa-times"></i></div><div class="log-content"><h4>Failed Login Attempts</h4><p>Multiple failed login attempts detected from IP 192.168.1.xxx</p></div><div class="log-time">2 hours ago</div></div>
+      <div class="log-entry"><div class="log-icon"><i class="fas fa-sync"></i></div><div class="log-content"><h4>Database Optimization</h4><p>Query performance improved by 23% after index optimization</p></div><div class="log-time">3 hours ago</div></div>
+    </div>
+  </div>
+</main>
+
+
+
+<div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i><span id="toastText">Message</span></div>
+
+</body>
+</html>

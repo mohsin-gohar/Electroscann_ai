@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Pricing | ElectroScan AI — Simple, Transparent Plans</title>
+  <!-- Google Fonts + premium typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="stylesheet" href="electroscann-ai.css" />
+<script src="electroscann-ai.js" defer></script>
+</head>
+<body>
+
+<main>
+  <div class="pricing-hero">
+    <div class="container">
+      <div class="hero-tag reveal"><i class="fas fa-tag"></i> SIMPLE PRICING</div>
+      <h1 class="reveal" style="font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em;">Plans for every<br>electrical professional</h1>
+      <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Choose the perfect plan for your business. All plans include AI-powered inspections.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Billing Toggle -->
+    <div class="pricing-toggle reveal">
+      <span class="toggle-option active" id="monthlyLabel">Monthly</span>
+      <div class="toggle-switch" id="toggleSwitch">
+        <div class="toggle-slider"></div>
+      </div>
+      <span class="toggle-option" id="yearlyLabel">Yearly <span class="save-badge">Save 20%</span></span>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-grid reveal">
+      <!-- Basic Plan -->
+      <div class="pricing-card">
+        <h3 style="font-size: 1.4rem;">Basic</h3>
+        <p style="color: var(--text-muted);">For individual electricians</p>
+        <div class="plan-price" id="basicPrice">$29<span>/mo</span></div>
+        <p id="basicPeriod" style="color: var(--text-muted); font-size: 0.8rem;">Billed monthly</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i> 50 AI Scans/month</li>
+          <li><i class="fas fa-check"></i> Basic Safety Reports</li>
+          <li><i class="fas fa-check"></i> Standard Calculator</li>
+          <li><i class="fas fa-check"></i> Email Support</li>
+          <li><i class="fas fa-times"></i> PDF Reports</li>
+          <li><i class="fas fa-times"></i> Analytics Dashboard</li>
+        </ul>
+        <button class="btn-premium btn-outline-light" onclick="showToast('Start your Basic plan trial')">Start Free Trial</button>
+      </div>
+
+      <!-- Professional Plan (Featured) -->
+      <div class="pricing-card featured">
+        <div class="featured-badge">MOST POPULAR</div>
+        <h3 style="font-size: 1.4rem;">Professional</h3>
+        <p style="color: var(--text-muted);">For growing electrical businesses</p>
+        <div class="plan-price" id="proPrice">$79<span>/mo</span></div>
+        <p id="proPeriod" style="color: var(--text-muted); font-size: 0.8rem;">Billed monthly</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i> Unlimited AI Scans</li>
+          <li><i class="fas fa-check"></i> Advanced Safety Reports</li>
+          <li><i class="fas fa-check"></i> Full Calculator Suite</li>
+          <li><i class="fas fa-check"></i> Priority Support</li>
+          <li><i class="fas fa-check"></i> PDF & Excel Export</li>
+          <li><i class="fas fa-check"></i> Analytics Dashboard</li>
+        </ul>
+        <button class="btn-premium btn-green" onclick="showToast('Get started with Professional plan')">Get Started</button>
+      </div>
+
+      <!-- Enterprise Plan -->
+      <div class="pricing-card">
+        <h3 style="font-size: 1.4rem;">Enterprise</h3>
+        <p style="color: var(--text-muted);">For large organizations</p>
+        <div class="plan-price" id="entPrice">$199<span>/mo</span></div>
+        <p id="entPeriod" style="color: var(--text-muted); font-size: 0.8rem;">Billed monthly</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check"></i> Unlimited Everything</li>
+          <li><i class="fas fa-check"></i> Custom AI Training</li>
+          <li><i class="fas fa-check"></i> Pakistan Cost Estimation</li>
+          <li><i class="fas fa-check"></i> 24/7 Phone Support</li>
+          <li><i class="fas fa-check"></i> White-label Reports</li>
+          <li><i class="fas fa-check"></i> Full Admin + API Access</li>
+        </ul>
+        <button class="btn-premium btn-outline-light" onclick="showToast('Contact our sales team for Enterprise pricing')">Contact Sales</button>
+      </div>
+    </div>
+
+    <!-- Feature Comparison Table -->
+    <div class="comparison-section reveal">
+      <h2 style="text-align: center; font-size: 1.8rem; margin-bottom: 32px;">Feature comparison</h2>
+      <div class="comp-table">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Basic</th><th>Professional</th><th>Enterprise</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AI Scans per month</td><td>50</td><td class="check">Unlimited</td><td class="check">Unlimited</td></tr>
+            <tr><td>Safety Reports</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+            <tr><td>PDF Export</td><td>✗</td><td class="check">✓</td><td class="check">✓</td></tr>
+            <tr><td>Room Wire Calculator</td><td>Basic</td><td class="check">Full Access</td><td class="check">Full Access</td></tr>
+            <tr><td>Pakistan Cost Estimation</td><td>✗</td><td>✗</td><td class="check">✓</td></tr>
+            <tr><td>Dashboard Analytics</td><td>✗</td><td class="check">✓</td><td class="check">✓</td></tr>
+            <tr><td>Team Members</td><td>1</td><td>5</td><td class="check">Unlimited</td></tr>
+            <tr><td>Admin Access</td><td>✗</td><td>✗</td><td class="check">✓</td></tr>
+            <tr><td>Support</td><td>Email</td><td>Priority</td><td>24/7 Phone</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Enterprise CTA -->
+    <div style="background: #F1F9F5; border-radius: 36px; padding: 48px; text-align: center; margin: 40px 0;" class="reveal">
+      <i class="fas fa-building" style="font-size: 2.5rem; color: var(--moss); margin-bottom: 16px; display: inline-block;"></i>
+      <h3 style="font-size: 1.5rem;">Need a custom plan?</h3>
+      <p style="color: var(--text-muted); max-width: 480px; margin: 12px auto 24px;">Contact our sales team for volume discounts, custom integrations, and SLA agreements.</p>
+      <button class="btn-premium" style="background: var(--pine); width: auto;" onclick="showToast('📞 Sales team will contact you within 24 hours')"><i class="fas fa-headset"></i> Talk to Sales</button>
+    </div>
+  </div>
+</main>
+
+
+
+<div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i><span id="toastText">Message</span></div>
+
+</body>
+</html>

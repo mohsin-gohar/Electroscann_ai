@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Market Rates | ElectroScan AI — Pakistan Electrical Pricing</title>
+  <!-- Google Fonts + premium typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="electroscann-ai.css" />
+  <script src="electroscann-ai.js" defer></script>
+</head>
+<body>
+
+
+<main>
+  <div class="market-hero">
+    <div class="container">
+      <div class="hero-tag reveal"><i class="fas fa-chart-line"></i> LIVE MARKET DATA</div>
+      <h1 class="reveal" style="font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;">Pakistan Electrical<br>Market Rates</h1>
+      <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Real-time pricing for wires, breakers, conduits, and labor — updated weekly from major suppliers.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Stats Cards -->
+    <div class="stats-row reveal">
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-wire"></i></div><div class="stat-value">Rs. 45-120</div><div class="stat-label">Wire (per meter)</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-shield-alt"></i></div><div class="stat-value">Rs. 850-2,500</div><div class="stat-label">Breakers</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-circle"></i></div><div class="stat-value">Rs. 120-350</div><div class="stat-label">PVC Conduits</div></div>
+      <div class="stat-card"><div class="stat-icon"><i class="fas fa-tools"></i></div><div class="stat-value">Rs. 1,200-1,800</div><div class="stat-label">Labor (per day)</div></div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="chart-card reveal">
+      <h4 style="margin-bottom: 20px;"><i class="fas fa-chart-line" style="color: var(--moss); margin-right: 8px;"></i>Price Trends (Last 30 Days)</h4>
+      <canvas id="priceChart" height="100" style="max-height: 280px;"></canvas>
+    </div>
+
+    <!-- Filter & Search -->
+    <div class="filter-bar reveal">
+      <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search items...">
+      <button class="category-btn active" data-cat="all">All</button>
+      <button class="category-btn" data-cat="Wire">Wires</button>
+      <button class="category-btn" data-cat="Protection">Breakers</button>
+      <button class="category-btn" data-cat="Conduit">Pipes/Conduit</button>
+      <button class="category-btn" data-cat="Accessories">Switches/Sockets</button>
+      <button class="category-btn" data-cat="Labor">Labor</button>
+    </div>
+
+    <!-- Market Rates Table -->
+    <div class="table-container reveal">
+      <table class="rates-table" id="ratesTable">
+        <thead>
+          <tr><th>Item Code</th><th>Description</th><th>Category</th><th>Unit</th><th>Current Price (PKR)</th><th>Trend</th><th>Edit</th></tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- dynamic rows from JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 40px;">
+      <button class="save-rate-btn" id="bulkSaveBtn"><i class="fas fa-save"></i> Save All Changes</button>
+    </div>
+  </div>
+</main>
+
+
+
+<div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i><span id="toastText">Updated</span></div>
+
+
+</body>
+</html>

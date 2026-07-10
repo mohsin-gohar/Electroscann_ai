@@ -1,0 +1,35 @@
+@{
+    Layout = "_DashboardLayout";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companies Management | ElectroScan AI Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+<div class="admin-container">
+  
+    <main class="main-content">
+        <div class="top-bar"><div class="page-title"><h1>Companies Management</h1><p>Manage registered companies</p></div><div class="user-menu"><button class="notification-btn"><i class="fas fa-bell"></i><span class="notification-badge">4</span></button><div class="user-avatar"><i class="fas fa-user-shield"></i></div></div></div>
+        <div class="table-card">
+            <div class="table-header"><h3><i class="fas fa-building"></i> All Companies</h3><button class="btn-primary" onclick="openModal('addModal')"><i class="fas fa-plus"></i> Add Company</button></div>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Company Name</th><th>Email</th><th>Phone</th><th>Employees</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody>
+                    <tr><td>#COM-001</td><td>Tech Solutions Pvt Ltd</td><td>info@techsolutions.com</td><td>021-1234567</td><td>50+</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn-success"><i class="fas fa-edit"></i></button> <button class="btn-danger"><i class="fas fa-trash"></i></button></td></tr>
+                    <tr><td>#COM-002</td><td>Power Systems Inc</td><td>contact@powersystems.com</td><td>021-7654321</td><td>120+</td><td><span class="status-badge status-active">Active</span></td><td><button class="btn-success"><i class="fas fa-edit"></i></button> <button class="btn-danger"><i class="fas fa-trash"></i></button></td></tr>
+                    <tr><td>#COM-003</td><td>Green Energy Ltd</td><td>info@greenenergy.com</td><td>021-9876543</td><td>30+</td><td><span class="status-badge status-pending">Pending</span></td><td><button class="btn-success"><i class="fas fa-edit"></i></button> <button class="btn-danger"><i class="fas fa-trash"></i></button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

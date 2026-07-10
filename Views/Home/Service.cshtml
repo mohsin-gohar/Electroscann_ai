@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Services | ElectroScan AI — AI-Powered Electrical Solutions</title>
+    <!-- Google Fonts + premium typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="electroscann-ai.css" />
+   
+
+</head>
+<body>
+
+    <main>
+        <div class="services-hero">
+            <div class="container">
+                <h1 class="reveal" style="font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;">AI-Powered Electrical<br>Solutions for Modern Professionals</h1>
+                <p class="reveal" style="color: #5A7568; max-width: 600px; margin: 16px auto 0;">From AI wire scanning to cost estimation — everything you need for safer, smarter electrical inspections.</p>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="container services-grid reveal">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-camera"></i></div>
+                <h3>AI Wire Scanner</h3>
+                <p style="color: var(--text-muted);">Computer vision that detects anomalies, overheating, and faults with 99.9% accuracy in seconds.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Real-time fault detection</li>
+                    <li><i class="fas fa-check-circle"></i> Burned wire identification</li>
+                    <li><i class="fas fa-check-circle"></i> Loose connection alerts</li>
+                </ul>
+                <a asp-action="AI_Scanner" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-calculator"></i></div>
+                <h3>Load Calculator</h3>
+                <p style="color: var(--text-muted);">NEC-compliant load analysis for residential, commercial, and industrial installations.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Wire gauge sizing</li>
+                    <li><i class="fas fa-check-circle"></i> Breaker recommendation</li>
+                    <li><i class="fas fa-check-circle"></i> Voltage drop analysis</li>
+                </ul>
+                <a asp-action="Calculator" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                <h3>Safety Reports</h3>
+                <p style="color: var(--text-muted);">Generate comprehensive, compliance-ready inspection reports instantly.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> NEC-compliant format</li>
+                    <li><i class="fas fa-check-circle"></i> Risk priority ranking</li>
+                    <li><i class="fas fa-check-circle"></i> PDF & Excel export</li>
+                </ul>
+                <a asp-action="Reports" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-rupee-sign"></i></div>
+                <h3>Cost Estimation</h3>
+                <p style="color: var(--text-muted);">Pakistan market rates with real-time pricing for materials and labor.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Live PKR rates</li>
+                    <li><i class="fas fa-check-circle"></i> Labor cost calculator</li>
+                    <li><i class="fas fa-check-circle"></i> Tax & GST integration</li>
+                </ul>
+                <a asp-action="Estimation" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Industrial Monitoring</h3>
+                <p style="color: var(--text-muted);">24/7 predictive monitoring for industrial electrical systems.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Real-time alerts</li>
+                    <li><i class="fas fa-check-circle"></i> Predictive maintenance</li>
+                    <li><i class="fas fa-check-circle"></i> Downtime prevention</li>
+                </ul>
+                <a asp-action="System_Monitoring" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-database"></i></div>
+                <h3>API Access</h3>
+                <p style="color: var(--text-muted);">Integrate our AI inspection engine into your own platforms.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> RESTful API</li>
+                    <li><i class="fas fa-check-circle"></i> Webhook support</li>
+                    <li><i class="fas fa-check-circle"></i> Custom integrations</li>
+                </ul>
+                <a asp-action="API" asp-controller="Home" class="btn-premium" style="padding: 10px 24px; font-size:0.85rem;">Learn More →</a>
+            </div>
+        </div>
+
+        <!-- Stats Bar - Fixed HTML -->
+        <div class="container stats-bar reveal" >
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">50K+</div>
+                    <div class="stat-label">Scans Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">99.9%</div>
+                    <div class="stat-label">Detection Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">AI Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1,247+</div>
+                    <div class="stat-label">Active Professionals</div>
+                </div>
+            </div>
+        </div>
+        <!-- How It Works -->
+        <div class="container how-section reveal" style="margin-top: 20px;">
+            <div style="text-align: center;">
+                <span style="color: var(--moss); font-weight: 600;">HOW IT WORKS</span>
+                <h2 style="font-size: 2rem; margin-top: 8px;">From scan to report in minutes</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">1</div><h4>Upload Image</h4><p style="color: var(--text-muted);">Take a photo or upload from gallery</p></div>
+                <div class="step-card"><div class="step-number">2</div><h4>AI Analysis</h4><p style="color: var(--text-muted);">Our AI detects faults in seconds</p></div>
+                <div class="step-card"><div class="step-number">3</div><h4>Get Report</h4><p style="color: var(--text-muted);">Download compliance-ready PDF</p></div>
+                <div class="step-card"><div class="step-number">4</div><h4>Take Action</h4><p style="color: var(--text-muted);">Follow AI recommendations</p></div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="container cta-services reveal" style="height: 400px; background-color: rgb(11, 43, 38);">
+            <i class="fas fa-rocket" style="font-size: 2.5rem; color: var(--mint); margin-top: 16px; "></i>
+            <h2 style="font-size: 1.8rem;">Ready to transform your electrical inspections?</h2>
+            <p style="margin: 16px auto; max-width: 500px; opacity: 0.9;">Join thousands of professionals using AI to work smarter and safer.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a asp-action="Free_Trail" asp-controller="Home" class="btn-premium" style="background: white; color: var(--pine);"><i class="fas fa-bolt"></i> Start Free Trial</a>
+                <a asp-action="Contact" asp-controller="Home" class="btn-premium" style="background: transparent; border: 1px solid white; color: white;">Contact Sales →</a>
+            </div>
+        </div>
+    </main>
+
+
+    <div id="toastMsg" class="toast-msg"><i class="fas fa-check-circle"></i><span id="toastText">Message</span></div>
+<script src="electroscann-ai.js" defer></script>
+</body>
+</html>

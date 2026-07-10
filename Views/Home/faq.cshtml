@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>FAQ & Help Center | ElectroScan AI — Get Answers</title>
+  <!-- Google Fonts + premium typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+
+
+</head>
+<body>
+
+<main>
+  <div class="faq-hero">
+    <div class="container">
+      <div class="hero-tag reveal"><i class="fas fa-question-circle"></i> HELP CENTER</div>
+      <h1 class="reveal" style="font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;">How can we help?</h1>
+      <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Find answers to common questions about AI scans, wire calculations, account settings, and more.</p>
+    </div>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="container search-container reveal">
+    <div class="search-box">
+      <input type="text" id="faqSearch" placeholder="Search for answers...">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="container category-tabs reveal">
+    <button class="category-btn active" data-cat="all">All Questions</button>
+    <button class="category-btn" data-cat="scanner">AI Scanner</button>
+    <button class="category-btn" data-cat="calculator">Calculator</button>
+    <button class="category-btn" data-cat="estimation">Cost Estimation</button>
+    <button class="category-btn" data-cat="account">Account & Security</button>
+  </div>
+
+  <!-- FAQ Accordion Sections -->
+  <div class="container faq-section reveal" id="faqContainer">
+    <!-- AI Scanner Section -->
+    <div class="faq-category-title" data-cat="scanner"><i class="fas fa-camera" style="margin-right: 12px; color: var(--moss);"></i>AI Scanner</div>
+    <div class="accordion-list">
+      <div class="accordion-item" data-cat="scanner">
+        <button class="accordion-header">
+          How does the AI wire scanner work?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Our AI wire scanner uses advanced computer vision and deep learning algorithms trained on millions of electrical images. Simply upload a photo or use your camera to scan electrical panels, wires, or components. The AI analyzes the image in real-time, detecting anomalies, burned wires, loose connections, and potential safety hazards with 99.9% accuracy.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="scanner">
+        <button class="accordion-header">
+          What types of electrical issues can the AI detect?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          The AI can detect: burned or overheated wires, loose connections, corrosion, improper grounding, overloaded circuits, phase imbalances, insulation damage, faulty breakers, and code violations. It also provides severity ratings and recommended actions for each issue found.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="scanner">
+        <button class="accordion-header">
+          Is the AI scanner accurate enough for professional use?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Absolutely. Our AI has been validated by licensed electricians and meets professional standards with 99.9% detection accuracy. However, we recommend using it as a diagnostic tool alongside professional judgment, not as a replacement for certified electrical inspections when required by law.
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <div class="faq-category-title" style="margin-top: 48px;" data-cat="calculator"><i class="fas fa-calculator" style="margin-right: 12px; color: var(--moss);"></i>Wire & Load Calculator</div>
+    <div class="accordion-list">
+      <div class="accordion-item" data-cat="calculator">
+        <button class="accordion-header">
+          How accurate is the wire calculator?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Our calculator uses NEC (National Electrical Code) standards and local electrical codes to provide accurate wire sizing, breaker recommendations, and load calculations. It factors in voltage drop, ambient temperature, and conduit fill to ensure safe and compliant installations.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="calculator">
+        <button class="accordion-header">
+          Can I save my calculations for later?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Yes! With a Professional or Enterprise plan, you can save unlimited calculations, organize them by project, and export detailed reports. Free users can save up to 5 calculations. All saved calculations are stored securely in your dashboard.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="calculator">
+        <button class="accordion-header">
+          Does it support three-phase calculations?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Yes, our calculator supports both single-phase and three-phase calculations. You can switch between calculation modes in the settings, and the tool will automatically adjust formulas and recommendations for three-phase industrial and commercial installations.
+        </div>
+      </div>
+    </div>
+
+    <!-- Cost Estimation Section -->
+    <div class="faq-category-title" style="margin-top: 48px;" data-cat="estimation"><i class="fas fa-dollar-sign" style="margin-right: 12px; color: var(--moss);"></i>Cost Estimation</div>
+    <div class="accordion-list">
+      <div class="accordion-item" data-cat="estimation">
+        <button class="accordion-header">
+          How often are market rates updated?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Our electrical market rates are updated weekly based on data from major suppliers. Admin users can also manually update rates in real-time to reflect current market conditions or special supplier agreements.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="estimation">
+        <button class="accordion-header">
+          Can I customize labor rates in the estimation?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Yes, you can customize labor rates based on your team's experience level, project complexity, and regional standards. The system allows setting different rates for residential, commercial, and industrial projects.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="estimation">
+        <button class="accordion-header">
+          Can I export estimates to PDF or Excel?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Yes, all estimates can be exported as professional PDF reports or Excel spreadsheets. PDF exports include your company logo, project details, itemized costs, and terms & conditions.
+        </div>
+      </div>
+    </div>
+
+    <!-- Account & Security Section -->
+    <div class="faq-category-title" style="margin-top: 48px;" data-cat="account"><i class="fas fa-shield-alt" style="margin-right: 12px; color: var(--moss);"></i>Account & Security</div>
+    <div class="accordion-list">
+      <div class="accordion-item" data-cat="account">
+        <button class="accordion-header">
+          Is my scan data secure?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Absolutely. We use bank-level AES-256 encryption for all data at rest and in transit. Our servers are SOC 2 Type II certified, and we never share your data with third parties. Enterprise customers can also request on-premise deployment for maximum security.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="account">
+        <button class="accordion-header">
+          Can I have multiple team members on one account?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          Yes, Professional and Enterprise plans support multiple users with role-based permissions. You can assign roles like Admin, Manager, Electrician, and Viewer, each with different access levels to scans, reports, and billing information.
+        </div>
+      </div>
+      <div class="accordion-item" data-cat="account">
+        <button class="accordion-header">
+          How do I cancel my subscription?
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </button>
+        <div class="accordion-content">
+          You can cancel anytime from your Account Settings. Your access will continue until the end of your billing period. We also offer a 30-day money-back guarantee for all paid plans, no questions asked.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Support CTA -->
+  <div class="container support-cta reveal">
+    <i class="fas fa-headset" style="font-size: 3rem; color: var(--moss); margin-bottom: 20px; display: inline-block;"></i>
+    <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Still have questions?</h2>
+    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 28px;">Our support team is available 24/7 to assist you with any technical or account-related issues.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="contact.html" class="btn-premium" id="contactSupportBtn"><i class="fas fa-envelope"></i> Contact Support</a>
+      <a href="live-chat.html" class="btn-premium" style="background: transparent; border: 1.5px solid var(--border-light); color: var(--pine);" id="liveChatBtn"><i class="fas fa-comment-dots"></i> Live Chat</a>
+    </div>
+  </div>
+</main>
+
+<div id="toastMsg" class="toast-msg">
+  <i class="fas fa-check-circle" style="color: var(--electric-green);"></i>
+  <span id="toastText">Message</span>
+</div>
+    <script src="~/js/site.js" defer></script>
+</body>
+</html>

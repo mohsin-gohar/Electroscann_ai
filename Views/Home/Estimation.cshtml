@@ -1,0 +1,102 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cost Estimation | ElectroScan AI — Smart Electrical Cost Calculator</title>
+  <!-- Google Fonts + premium typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+
+
+<main>
+  <div class="estimation-hero">
+    <div class="container">
+      <div class="hero-tag reveal"><i class="fas fa-rupee-sign"></i> COST ESTIMATION</div>
+      <h1 class="reveal" style="font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;">Smart Electrical Cost Estimator</h1>
+      <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Pakistan market rates • Real-time calculation • NEC-compliant estimates</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Tab Navigation -->
+    <div class="tabs-container reveal">
+      <button class="tab-btn active" id="estimateTabBtn">📋 Cost Estimator</button>
+      <button class="tab-btn" id="adminTabBtn">⚙️ Admin Rates Editor</button>
+    </div>
+
+    <!-- Cost Estimator Panel -->
+    <div id="estimatorPanel" class="reveal">
+      <div class="estimation-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+          <div>
+            <h3 style="font-weight: 700;">Project Cost Breakdown</h3>
+            <p style="color: var(--text-muted);">Pakistan Electrical Market — Live Rates</p>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <button class="btn-premium" id="printEstimateBtn" style="background: transparent; border: 1.5px solid var(--border-light); color: var(--pine);"><i class="fas fa-print"></i> Print</button>
+            <button class="btn-premium btn-orange" id="downloadEstimateBtn"><i class="fas fa-download"></i> Export PDF</button>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="cost-table" id="costTable">
+            <thead>
+              <tr><th>Item Description</th><th>Quantity</th><th>Unit</th><th>Rate (PKR)</th><th>Amount (PKR)</th></tr>
+            </thead>
+            <tbody id="estimateBody">
+              <!-- dynamic rows from JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="totalSummary" style="margin-top: 28px; text-align: right; padding: 20px; background: #F9FDFB; border-radius: 24px;">
+          <p><strong>Subtotal:</strong> <span id="subtotalVal">0</span> PKR</p>
+          <p><strong>Labor (15%):</strong> <span id="laborVal">0</span> PKR</p>
+          <p><strong>Tax (5%):</strong> <span id="taxVal">0</span> PKR</p>
+          <h3 style="color: var(--electric-orange); margin-top: 12px;">Grand Total: <span id="grandTotalVal">0</span> PKR</h3>
+        </div>
+        <div class="alert alert-info" style="background: #EFF9F4; border: none; border-radius: 20px; margin-top: 20px;">
+          <i class="fas fa-info-circle" style="color: var(--moss);"></i> Prices reflect current Pakistan market averages. Labor calculated at standard residential rates. Adjust quantities to update total instantly.
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Editor Panel (hidden initially) -->
+    <div id="adminPanel" style="display: none;" class="reveal">
+      <div class="admin-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+          <div>
+            <h3 style="font-weight: 700;">Market Rates Editor</h3>
+            <p style="color: var(--text-muted);">Update electrical inventory pricing (Admin Access)</p>
+          </div>
+          <button class="btn-premium btn-orange" id="saveRatesBtn"><i class="fas fa-save"></i> Save Global Rates</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="cost-table">
+            <thead><tr><th>Item Code</th><th>Description</th><th>Current Rate (PKR)</th><th>New Rate (PKR)</th></tr></thead>
+            <tbody id="adminRatesBody"></tbody>
+          </table>
+        </div>
+        <div class="alert alert-warning" style="margin-top: 24px; background: #FFF8F0; border: none; border-radius: 20px;">
+          <i class="fas fa-exclamation-triangle" style="color: var(--electric-orange);"></i> Changes will apply to all new estimations. Historical data remains unchanged.
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<div id="toastMsg" class="toast-msg">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastText">Updated</span>
+</div>
+    <script src="~/js/site.js" defer></script>
+</body>
+</html>

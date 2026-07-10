@@ -1,0 +1,153 @@
+﻿@model Electroscann_ai.Models.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register - ElectroScan AI";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ElectroScan AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="logo">
+                <i class="fas fa-microchip" style="font-size: 2.5rem; color: #1F8A6B;"></i>
+                <h1>Create Account</h1>
+                <p class="text-muted">Join ElectroScan AI today</p>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+            {
+                <div class="alert" style="background: #FEE2E2; color: #991B1B; padding: 12px; border-radius: 16px; margin-bottom: 20px;">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div>@error.ErrorMessage</div>
+                    }
+                </div>
+            }
+
+            <form asp-action="Register" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="FullName">Full Name *</label>
+                        <input asp-for="FullName" placeholder="Muhammad Ali">
+                        <span asp-validation-for="FullName" class="text-muted"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Email Address *</label>
+                        <input asp-for="Email" type="email" placeholder="you@example.com">
+                        <span asp-validation-for="Email" class="text-muted"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber">Phone Number *</label>
+                        <input asp-for="PhoneNumber" placeholder="+92 300 1234567">
+                        <span asp-validation-for="PhoneNumber" class="text-muted"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City">City</label>
+                        <input asp-for="City" placeholder="Lahore, Karachi, Islamabad">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="Password">Password *</label>
+                        <input asp-for="Password" type="password" placeholder="••••••••">
+                        <span asp-validation-for="Password" class="text-muted"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword">Confirm Password *</label>
+                        <input asp-for="ConfirmPassword" type="password" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Role">I am a *</label>
+                    <select asp-for="Role" id="RoleSelect">
+                        <option value="4">Client / Homeowner</option>
+                        <option value="2">Electrician</option>
+                        <option value="3">Company / Business</option>
+                    </select>
+                </div>
+
+                <!-- Electrician Fields -->
+                <div id="ElectricianFields" class="role-specific-fields">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="LicenseNumber">License Number</label>
+                            <input asp-for="LicenseNumber" placeholder="PEC-XXXX-XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Specialization">Specialization</label>
+                            <select asp-for="Specialization">
+                                <option value="">Select Specialization</option>
+                                <option>Residential Wiring</option>
+                                <option>Commercial Wiring</option>
+                                <option>Industrial Wiring</option>
+                                <option>Solar Installation</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="YearsOfExperience">Years of Experience</label>
+                        <input asp-for="YearsOfExperience" type="number" min="0" max="50" placeholder="e.g., 5">
+                    </div>
+                </div>
+
+                <!-- Company Fields -->
+                <div id="CompanyFields" class="role-specific-fields">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="CompanyName">Company Name</label>
+                            <input asp-for="CompanyName" placeholder="Tech Solutions Pvt Ltd">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NTNNumber">NTN Number</label>
+                            <input asp-for="NTNNumber" placeholder="NTN-XXXX-XXXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Industry">Industry</label>
+                        <select asp-for="Industry">
+                            <option value="">Select Industry</option>
+                            <option>Electrical Contracting</option>
+                            <option>Construction</option>
+                            <option>Solar Energy</option>
+                            <option>Facility Management</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-register">Create Account</button>
+
+                <div class="login-link">
+                    <p>Already have an account? <a href="@Url.Action("Login", "Account")">Sign in</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        function toggleRoleFields() {
+            var role = $('#RoleSelect').val();
+            $('#ElectricianFields').removeClass('active');
+            $('#CompanyFields').removeClass('active');
+            if (role === '2') $('#ElectricianFields').addClass('active');
+            if (role === '3') $('#CompanyFields').addClass('active');
+        }
+        $(document).ready(function() { toggleRoleFields(); $('#RoleSelect').change(toggleRoleFields); });
+    </script>
+</body>
+</html>
