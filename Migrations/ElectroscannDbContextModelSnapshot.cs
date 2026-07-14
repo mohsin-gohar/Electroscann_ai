@@ -105,10 +105,6 @@ namespace Electroscann_ai.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -116,26 +112,27 @@ namespace Electroscann_ai.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Industry")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Logo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NTNNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OwnerName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Companies");
                 });
@@ -186,40 +183,39 @@ namespace Electroscann_ai.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CompletedJobs")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Experience")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAvailable")
+                    b.Property<bool>("IsVerified")
                         .HasColumnType("bit");
 
                     b.Property<string>("LicenseNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileImage")
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Specialization")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Skills")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TotalReviews")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YearsOfExperience")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Electricians");
                 });
@@ -568,6 +564,10 @@ namespace Electroscann_ai.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -575,12 +575,21 @@ namespace Electroscann_ai.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("EmailVerified")
+                        .HasColumnType("bit");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastLoginAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -591,14 +600,10 @@ namespace Electroscann_ai.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfileImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Role")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -665,6 +670,28 @@ namespace Electroscann_ai.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ElectroScanAI.Models.Entities.Company", b =>
+                {
+                    b.HasOne("ElectroScanAI.Models.Entities.User", "User")
+                        .WithOne("CompanyProfile")
+                        .HasForeignKey("ElectroScanAI.Models.Entities.Company", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ElectroScanAI.Models.Entities.Electrician", b =>
+                {
+                    b.HasOne("ElectroScanAI.Models.Entities.User", "User")
+                        .WithOne("ElectricianProfile")
+                        .HasForeignKey("ElectroScanAI.Models.Entities.Electrician", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ElectroScanAI.Models.Entities.Job", b =>
                 {
                     b.HasOne("ElectroScanAI.Models.Entities.Company", "Company")
@@ -681,7 +708,7 @@ namespace Electroscann_ai.Migrations
                     b.HasOne("ElectroScanAI.Models.Entities.Electrician", "Electrician")
                         .WithMany()
                         .HasForeignKey("ElectricianId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ElectroScanAI.Models.Entities.Job", "Job")
@@ -747,7 +774,7 @@ namespace Electroscann_ai.Migrations
                     b.HasOne("ElectroScanAI.Models.Entities.User", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Electrician");
@@ -786,6 +813,13 @@ namespace Electroscann_ai.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ElectroScanAI.Models.Entities.User", b =>
+                {
+                    b.Navigation("CompanyProfile");
+
+                    b.Navigation("ElectricianProfile");
                 });
 #pragma warning restore 612, 618
         }

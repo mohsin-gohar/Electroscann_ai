@@ -6,31 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Electroscann_ai.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialFixApplied : Migration
+    public partial class SyncModelsWithDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Companies",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OwnerName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Companies", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "ContactMessages",
                 columns: table => new
@@ -48,27 +28,6 @@ namespace Electroscann_ai.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ContactMessages", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Electricians",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Skills = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsAvailable = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Electricians", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,41 +59,18 @@ namespace Electroscann_ai.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastLoginAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    EmailVerified = table.Column<bool>(type: "bit", nullable: false),
+                    ProfileImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Jobs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Budget = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    CompanyId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Jobs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Jobs_Companies_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Companies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,6 +116,58 @@ namespace Electroscann_ai.Migrations
                     table.PrimaryKey("PK_AIScans", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AIScans_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Companies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NTNNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Industry = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Companies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Companies_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Electricians",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    LicenseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YearsOfExperience = table.Column<int>(type: "int", nullable: false),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
+                    Rating = table.Column<double>(type: "float", nullable: false),
+                    TotalReviews = table.Column<int>(type: "int", nullable: false),
+                    CompletedJobs = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Electricians", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Electricians_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -267,36 +255,6 @@ namespace Electroscann_ai.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Reviews",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ReviewerId = table.Column<int>(type: "int", nullable: false),
-                    ElectricianId = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Electricians_ElectricianId",
-                        column: x => x.ElectricianId,
-                        principalTable: "Electricians",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Users_ReviewerId",
-                        column: x => x.ReviewerId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Subscriptions",
                 columns: table => new
                 {
@@ -347,36 +305,6 @@ namespace Electroscann_ai.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobApplications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JobId = table.Column<int>(type: "int", nullable: false),
-                    ElectricianId = table.Column<int>(type: "int", nullable: false),
-                    CoverLetter = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JobApplications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_JobApplications_Electricians_ElectricianId",
-                        column: x => x.ElectricianId,
-                        principalTable: "Electricians",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JobApplications_Jobs_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Jobs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ScanResults",
                 columns: table => new
                 {
@@ -400,6 +328,92 @@ namespace Electroscann_ai.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Jobs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Budget = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jobs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Jobs_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReviewerId = table.Column<int>(type: "int", nullable: false),
+                    ElectricianId = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Electricians_ElectricianId",
+                        column: x => x.ElectricianId,
+                        principalTable: "Electricians",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reviews_Users_ReviewerId",
+                        column: x => x.ReviewerId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JobApplications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JobId = table.Column<int>(type: "int", nullable: false),
+                    ElectricianId = table.Column<int>(type: "int", nullable: false),
+                    CoverLetter = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JobApplications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JobApplications_Electricians_ElectricianId",
+                        column: x => x.ElectricianId,
+                        principalTable: "Electricians",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_JobApplications_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ActivityLogs_UserId",
                 table: "ActivityLogs",
@@ -409,6 +423,18 @@ namespace Electroscann_ai.Migrations
                 name: "IX_AIScans_UserId",
                 table: "AIScans",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Companies_UserId",
+                table: "Companies",
+                column: "UserId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Electricians_UserId",
+                table: "Electricians",
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobApplications_ElectricianId",

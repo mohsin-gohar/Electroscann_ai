@@ -305,13 +305,36 @@ function initBlogPage() {
 
 let counters = { lights: 6, fans: 2, sockets: 6, ac: 1, heavy: 0 };
 
+const counterInputMap = {
+    lights: 'lightsInput',
+    fans: 'fansInput',
+    sockets: 'socketsInput',
+    ac: 'acInput',
+    heavy: 'heavyInput'
+};
+
+const counterDisplayMap = {
+    lights: 'lightVal',
+    fans: 'fanVal',
+    sockets: 'socketVal',
+    ac: 'acVal',
+    heavy: 'heavyVal'
+};
+
+function syncCounterInputs() {
+    Object.keys(counterInputMap).forEach(type => {
+        const input = document.getElementById(counterInputMap[type]);
+        if (input) input.value = counters[type];
+    });
+}
+
 function modifyCounter(type, delta) {
     let newVal = counters[type] + delta;
     if (newVal >= 0 && newVal <= 30) {
         counters[type] = newVal;
-        const counterMap = { lights: 'lightVal', fans: 'fanVal', sockets: 'socketVal', ac: 'acVal', heavy: 'heavyVal' };
-        const element = document.getElementById(counterMap[type]);
+        const element = document.getElementById(counterDisplayMap[type]);
         if (element) element.innerText = counters[type];
+        syncCounterInputs();
         updateCalculation();
     }
 }
@@ -351,23 +374,23 @@ function updateCalculation() {
     if (totalWatts <= 1500) {
         gauge = '14 AWG';
         breaker = '15 A';
-        safetyMsg = '✓ Standard residential wiring sufficient. Ensure proper grounding.';
+        safetyMsg = 'Standard residential wiring sufficient. Ensure proper grounding.';
     } else if (totalWatts <= 2500) {
         gauge = '12 AWG';
         breaker = '20 A';
-        safetyMsg = '✓ 12 AWG copper recommended. Suitable for general purpose circuits.';
+        safetyMsg = '12 AWG copper recommended. Suitable for general purpose circuits.';
     } else if (totalWatts <= 3800) {
         gauge = '10 AWG';
         breaker = '30 A';
-        safetyMsg = '⚠️ Higher load detected. 10 AWG wire with 30A breaker recommended.';
+        safetyMsg = 'Higher load detected. 10 AWG wire with 30A breaker recommended.';
     } else if (totalWatts <= 5500) {
         gauge = '8 AWG';
         breaker = '40 A';
-        safetyMsg = '⚠️ Heavy load. Consider dedicated circuits for AC and appliances.';
+        safetyMsg = 'Heavy load. Consider dedicated circuits for AC and appliances.';
     } else {
         gauge = '6 AWG';
         breaker = '50 A';
-        safetyMsg = '🔴 High power demand. Consult a licensed electrician.';
+        safetyMsg = 'High power demand. Consult a licensed electrician.';
     }
 
     const wireGaugeDisplay = document.getElementById('wireGaugeDisplay');
@@ -376,35 +399,42 @@ function updateCalculation() {
 
     if (wireGaugeDisplay) wireGaugeDisplay.innerText = gauge;
     if (breakerDisplay) breakerDisplay.innerText = breaker;
-    if (safetyMessage) safetyMessage.innerHTML = safetyMsg;
+    if (safetyMessage) safetyMessage.textContent = safetyMsg;
 }
 
 function initCalculatorPage() {
+    const form = document.getElementById('calculatorForm');
+    if (!form) return;
+
+    // Seed counters from posted / model values
+    counters.lights = parseInt(document.getElementById('lightsInput')?.value || '6', 10);
+    counters.fans = parseInt(document.getElementById('fansInput')?.value || '2', 10);
+    counters.sockets = parseInt(document.getElementById('socketsInput')?.value || '6', 10);
+    counters.ac = parseInt(document.getElementById('acInput')?.value || '1', 10);
+    counters.heavy = parseInt(document.getElementById('heavyInput')?.value || '0', 10);
+
+    Object.keys(counterDisplayMap).forEach(type => {
+        const el = document.getElementById(counterDisplayMap[type]);
+        if (el) el.innerText = counters[type];
+    });
+    syncCounterInputs();
+
     const roomLength = document.getElementById('roomLength');
     const roomWidth = document.getElementById('roomWidth');
     const roomHeight = document.getElementById('roomHeight');
-    const calculateBtn = document.getElementById('calculateBtn');
 
     if (roomLength) roomLength.addEventListener('input', updateCalculation);
     if (roomWidth) roomWidth.addEventListener('input', updateCalculation);
     if (roomHeight) roomHeight.addEventListener('input', updateCalculation);
 
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', () => {
-            updateCalculation();
-            showToast('✅ Calculation updated with current values');
-        });
+    // Live preview only when there is no server-bound result yet
+    const hasServerResult = form.dataset.hasResult === 'true';
+    if (!hasServerResult) {
+        updateCalculation();
     }
 
-    updateCalculation();
-
-    document.querySelectorAll('[data-counter]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const type = btn.getAttribute('data-counter');
-            const delta = parseInt(btn.getAttribute('data-delta') || '1');
-            modifyCounter(type, delta);
-        });
-    });
+    // Ensure hidden fixture fields are current before form POST
+    form.addEventListener('submit', syncCounterInputs);
 }
 
 /* ============================================
@@ -1045,7 +1075,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pageId === 'contact' || path.includes('contact')) initContactPage();
     if (pageId === 'about' || path.includes('about')) initAboutPage();
     if (pageId === 'pricing' || path.includes('pricing')) initPricingPage();
-    if (pageId === 'calculator' || path.includes('calculator')) initCalculatorPage();
+    if (pageId === 'calculator' || path.toLowerCase().includes('calculator')) initCalculatorPage();
     if (pageId === 'faq' || path.includes('faq')) initFaqPage();
     if (pageId === 'demo' || path.includes('demo')) initDemoPage();
     if (pageId === 'estimation' || path.includes('estimation')) initEstimationPage();

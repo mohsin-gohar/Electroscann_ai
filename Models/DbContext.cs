@@ -32,6 +32,55 @@ namespace Electroscann_ai.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // User <-> Electrician (1:1)
+            modelBuilder.Entity<Electrician>()
+                .HasOne(e => e.User)
+                .WithOne(u => u.ElectricianProfile)
+                .HasForeignKey<Electrician>(e => e.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Electrician>()
+                .HasIndex(e => e.UserId)
+                .IsUnique();
+
+            // User <-> Company (1:1)
+            modelBuilder.Entity<Company>()
+                .HasOne(c => c.User)
+                .WithOne(u => u.CompanyProfile)
+                .HasForeignKey<Company>(c => c.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Company>()
+                .HasIndex(c => c.UserId)
+                .IsUnique();
+
+            // Reviews: avoid multiple cascade paths (User -> Review AND User -> Electrician -> Review)
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Reviewer)
+                .WithMany()
+                .HasForeignKey(r => r.ReviewerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Electrician)
+                .WithMany()
+                .HasForeignKey(r => r.ElectricianId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // JobApplications: avoid multiple cascade paths (User -> Company -> Job -> App
+            // AND User -> Electrician -> App)
+            modelBuilder.Entity<JobApplication>()
+                .HasOne(a => a.Job)
+                .WithMany()
+                .HasForeignKey(a => a.JobId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<JobApplication>()
+                .HasOne(a => a.Electrician)
+                .WithMany()
+                .HasForeignKey(a => a.ElectricianId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Sender)
                 .WithMany()
