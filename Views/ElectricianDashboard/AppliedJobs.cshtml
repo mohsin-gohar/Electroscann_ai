@@ -1,0 +1,116 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Applied Jobs";
+    ViewBag.PageTitle = "Applied Jobs";
+    ViewBag.ActivePage = "AppliedJobs";
+}
+
+<div class="page-header">
+    <h1>Applied Jobs</h1>
+    <p>Track the status of your job applications</p>
+</div>
+
+<!-- Status Summary -->
+<div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-paper-plane"></i></div>
+        <div class="stat-value">8</div>
+        <div class="stat-label">Total Applied</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-hourglass-half"></i></div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Under Review</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="stat-value">2</div>
+        <div class="stat-label">Accepted</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
+        <div class="stat-value">3</div>
+        <div class="stat-label">Rejected</div>
+    </div>
+</div>
+
+<!-- Applications Table -->
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-file-alt"></i> My Applications</div>
+        <a asp-action="AvailableJobs" asp-controller="ElectricianDashboard" class="btn-primary-dash">
+            <i class="fas fa-plus"></i> Apply to More Jobs
+        </a>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Applied On</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-size:0.75rem;color:#9CA3AF;">#APP-001</td>
+                <td><strong>Senior Electrician – Residential</strong></td>
+                <td>TechBuild Corp</td>
+                <td>Lahore</td>
+                <td>2026-07-01</td>
+                <td><span class="badge badge-green"><i class="fas fa-circle" style="font-size:6px;"></i> Accepted</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details"><i class="fas fa-eye"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:0.75rem;color:#9CA3AF;">#APP-002</td>
+                <td><strong>Commercial Electrical Inspector</strong></td>
+                <td>Power Systems Ltd</td>
+                <td>Karachi</td>
+                <td>2026-07-05</td>
+                <td><span class="badge badge-yellow"><i class="fas fa-circle" style="font-size:6px;"></i> Under Review</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details"><i class="fas fa-eye"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:0.75rem;color:#9CA3AF;">#APP-003</td>
+                <td><strong>Solar Panel Installation Tech</strong></td>
+                <td>GreenEnergy Pvt</td>
+                <td>Islamabad</td>
+                <td>2026-06-28</td>
+                <td><span class="badge badge-red"><i class="fas fa-circle" style="font-size:6px;"></i> Rejected</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details"><i class="fas fa-eye"></i></button>
+                    <button class="btn-action btn-delete" title="Remove" onclick="showDashToast('Application removed.')"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:0.75rem;color:#9CA3AF;">#APP-004</td>
+                <td><strong>Electrical Safety Auditor</strong></td>
+                <td>SafetyFirst Consulting</td>
+                <td>Lahore</td>
+                <td>2026-07-10</td>
+                <td><span class="badge badge-blue"><i class="fas fa-circle" style="font-size:6px;"></i> Shortlisted</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details"><i class="fas fa-eye"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:0.75rem;color:#9CA3AF;">#APP-005</td>
+                <td><strong>Industrial Maintenance Electrician</strong></td>
+                <td>FactoryPro Industries</td>
+                <td>Faisalabad</td>
+                <td>2026-07-12</td>
+                <td><span class="badge badge-yellow"><i class="fas fa-circle" style="font-size:6px;"></i> Under Review</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details"><i class="fas fa-eye"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

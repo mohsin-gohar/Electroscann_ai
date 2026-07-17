@@ -47,6 +47,50 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ClientDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50RGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ClientDashboard/Payments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50RGFzaGJvYXJkXFBheW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ClientDashboard/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50RGFzaGJvYXJkXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ClientDashboard/Projects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50RGFzaGJvYXJkXFByb2plY3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ClientDashboard/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50RGFzaGJvYXJkXFNldHRpbmdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Applications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxBcHBsaWNhdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Jobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxKb2JzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Payments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxQYXltZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/CompanyDashboard/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueURhc2hib2FyZFxTZXR0aW5ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/ai_scans.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXGFpX3NjYW5zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -55,8 +99,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXGNvbXBhbmllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/electrician.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXGVsZWN0cmljaWFuLmNzaHRtbA==
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/Electricians.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEVsZWN0cmljaWFucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/index.cshtml]
@@ -83,8 +127,44 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXHN1YnNjcmlwdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/user.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXHVzZXIuY3NodG1s
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Dashboard/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFVzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/AppliedJobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcQXBwbGllZEpvYnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/AvailableJobs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcQXZhaWxhYmxlSm9icy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Earnings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcRWFybmluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Messages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcTWVzc2FnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Notifications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcTm90aWZpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Projects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcUHJvamVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/ElectricianDashboard/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWxlY3RyaWNpYW5EYXNoYm9hcmRcU2V0dGluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/About.cshtml]
@@ -109,6 +189,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/Cookies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb29raWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/Demo.cshtml]
@@ -145,6 +229,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/System_Monitor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTeXN0ZW1fTW9uaXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/Terms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUZXJtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/laravelproject/Electroscann-ai/Electroscann-ai/Views/Home/Testimonials.cshtml]

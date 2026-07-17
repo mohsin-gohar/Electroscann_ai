@@ -1,0 +1,100 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Manage Jobs";
+    ViewBag.PageTitle = "Manage Jobs";
+    ViewBag.ActivePage = "Jobs";
+}
+
+<div class="page-header">
+    <h1>Manage Jobs</h1>
+    <p>Post and manage your job listings</p>
+</div>
+
+<!-- Post New Job Form -->
+<div class="table-card" style="margin-bottom:24px;">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-plus-circle"></i> Post New Job</div>
+    </div>
+    <div style="padding:22px;">
+        <form>
+            <div class="form-grid" style="margin-bottom:16px;">
+                <div class="form-group">
+                    <label class="form-label">Job Title *</label>
+                    <input type="text" class="form-input" placeholder="e.g. Senior Electrician">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Job Type</label>
+                    <select class="form-select">
+                        <option value="">Select Type</option>
+                        <option>Full Time</option>
+                        <option>Part Time</option>
+                        <option>Contract</option>
+                        <option>Internship</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Location</label>
+                    <input type="text" class="form-input" placeholder="e.g. Lahore, Punjab">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Salary / Pay</label>
+                    <input type="text" class="form-input" placeholder="e.g. Rs. 25,000 - 35,000/mo">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Required Experience</label>
+                    <select class="form-select">
+                        <option>Entry Level (0-2 years)</option>
+                        <option>Mid Level (3-5 years)</option>
+                        <option>Senior Level (5+ years)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Specialization Required</label>
+                    <select class="form-select">
+                        <option value="">Any</option>
+                        <option>Residential Wiring</option>
+                        <option>Commercial Wiring</option>
+                        <option>Industrial Wiring</option>
+                        <option>Solar Installation</option>
+                    </select>
+                </div>
+                <div class="form-group" style="grid-column:1/-1;">
+                    <label class="form-label">Job Description *</label>
+                    <textarea class="form-input" rows="4" placeholder="Describe the job responsibilities, requirements, and benefits..."></textarea>
+                </div>
+            </div>
+            <div style="display:flex;gap:12px;">
+                <button type="button" class="btn-primary-dash" onclick="showDashToast('Job posted successfully!')">
+                    <i class="fas fa-paper-plane"></i> Post Job
+                </button>
+                <button type="reset" class="btn-outline-dash">Clear</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Existing Jobs -->
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-list"></i> My Job Listings</div>
+        <div class="table-card-actions">
+            <div class="search-field">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search jobs...">
+            </div>
+        </div>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr><th>Job Title</th><th>Type</th><th>Location</th><th>Applications</th><th>Posted</th><th>Status</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" style="text-align:center;padding:40px;color:#9CA3AF;font-size:0.875rem;">
+                    <i class="fas fa-briefcase" style="font-size:2rem;margin-bottom:12px;display:block;color:#E2ECE9;"></i>
+                    No jobs posted yet. Use the form above to post your first job!
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

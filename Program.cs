@@ -7,16 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ========== ADD SERVICES ==========
-
-// Add Controllers with Views
+// Add services
 builder.Services.AddControllersWithViews();
 
-// Add DbContext
+// Database Context
 builder.Services.AddDbContext<ElectroscannDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("dbcs")));
 
-// Add Authentication with Cookie
+// Authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -30,7 +28,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.SameSite = SameSiteMode.Lax;
     });
 
-// Add Authorization
+// Authorization Policies
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -39,10 +37,10 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ClientOnly", policy => policy.RequireRole("Client"));
 });
 
-// Add Password Hasher for custom user authentication
+// Password Hasher
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
-// Add Session support (optional, for temp data)
+// Session
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -51,59 +49,45 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Add HttpContextAccessor for accessing current user
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
-// ========== CONFIGURE PIPELINE ==========
-
-// Configure error handling
+// Pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-// Security middleware
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-// Routing middleware
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseSession();
 
-// Authentication & Authorization (ORDER MATTERS!)
-app.UseAuthentication();  // First Authentication
-app.UseAuthorization();   // Then Authorization
-app.UseSession();         // Then Session
-
-// ========== MAP ROUTES ==========
-
-// Dashboard routes
+// Routes
 app.MapControllerRoute(
-    name: "Dashboard",
+    name: "dashboard",
     pattern: "Dashboard/{action=Index}/{id?}",
     defaults: new { controller = "Dashboard" });
 
-// Account routes (Login, Register)
 app.MapControllerRoute(
     name: "account",
     pattern: "Account/{action=Login}/{id?}",
     defaults: new { controller = "Account" });
 
-// Electrician Dashboard routes
 app.MapControllerRoute(
     name: "electrician",
     pattern: "Electrician/{action=Index}/{id?}",
     defaults: new { controller = "ElectricianDashboard" });
 
-// Company Dashboard routes
 app.MapControllerRoute(
     name: "company",
     pattern: "Company/{action=Index}/{id?}",
     defaults: new { controller = "CompanyDashboard" });
 
-// Default route (Home page)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,0 +1,137 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Users Management";
+    ViewBag.PageTitle = "Users Management";
+    ViewBag.ActivePage = "Users";
+}
+
+<div class="page-header">
+    <h1>Users Management</h1>
+    <p>Manage all registered users, roles, and account status.</p>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-users"></i> All Users</div>
+        <div class="table-card-actions">
+            <div class="search-field">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search users...">
+            </div>
+            <button class="btn-primary-dash" onclick="searchUsers()"><i class="fas fa-search"></i> Search</button>
+        </div>
+    </div>
+    <table class="data-table" id="usersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#USR-001</td>
+                <td>Muhammad Ali</td>
+                <td>ali@example.com</td>
+                <td>User</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>2026-01-15</td>
+                <td>
+                    <button class="btn-action btn-edit" onclick="editUser(1)"><i class="fas fa-edit"></i></button>
+                    <button class="btn-action btn-delete" onclick="deleteUser(1)"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>#USR-002</td>
+                <td>Sarah Khan</td>
+                <td>sarah@example.com</td>
+                <td>Electrician</td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>2026-02-10</td>
+                <td>
+                    <button class="btn-action btn-edit" onclick="editUser(2)"><i class="fas fa-edit"></i></button>
+                    <button class="btn-action btn-delete" onclick="deleteUser(2)"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>#USR-003</td>
+                <td>Ahmed Raza</td>
+                <td>ahmed@example.com</td>
+                <td>Company</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+                <td>2026-03-05</td>
+                <td>
+                    <button class="btn-action btn-edit" onclick="editUser(3)"><i class="fas fa-edit"></i></button>
+                    <button class="btn-action btn-delete" onclick="deleteUser(3)"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>#USR-004</td>
+                <td>Fatima Zafar</td>
+                <td>fatima@example.com</td>
+                <td>User</td>
+                <td><span class="badge badge-gray">Inactive</span></td>
+                <td>2026-01-20</td>
+                <td>
+                    <button class="btn-action btn-edit" onclick="editUser(4)"><i class="fas fa-edit"></i></button>
+                    <button class="btn-action btn-delete" onclick="deleteUser(4)"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal-overlay" id="editModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-title">Edit User</div>
+            <button class="modal-close" onclick="closeModal('editModal')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="form-grid">
+            <div class="form-group full">
+                <label class="form-label">Name</label>
+                <input type="text" id="editName" class="form-input">
+            </div>
+            <div class="form-group full">
+                <label class="form-label">Email</label>
+                <input type="email" id="editEmail" class="form-input">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Role</label>
+                <select id="editRole" class="form-select">
+                    <option>User</option>
+                    <option>Electrician</option>
+                    <option>Company</option>
+                    <option>Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Status</label>
+                <select id="editStatus" class="form-select">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Pending</option>
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-outline-dash" onclick="closeModal('editModal')">Cancel</button>
+            <button class="btn-primary-dash" onclick="saveUser()">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    let currentUserId = null;
+    function editUser(id) { currentUserId = id; openModal('editModal'); }
+    function saveUser() { showDashToast('User updated successfully!'); closeModal('editModal'); }
+    function deleteUser(id) { if (confirm('Delete this user?')) showDashToast('User deleted successfully'); }
+    function searchUsers() { const search = document.getElementById('searchInput').value; showDashToast('Searching: ' + search); }
+</script>
+}

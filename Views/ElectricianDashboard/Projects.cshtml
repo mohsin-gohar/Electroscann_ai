@@ -1,0 +1,71 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "My Projects";
+    ViewBag.PageTitle = "Projects";
+    ViewBag.ActivePage = "Projects";
+}
+
+<div class="page-header">
+    <h1>My Active Projects</h1>
+    <p>Track progress, milestones, and client communications for your active service projects</p>
+</div>
+
+<!-- Active Projects List -->
+<div class="table-card" style="margin-bottom:24px;">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-tasks"></i> Active Service Orders</div>
+        <span class="badge badge-green">1 In Progress</span>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Client / Company</th>
+                <th>Service Details</th>
+                <th>Due Date</th>
+                <th>Progress Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="font-family:monospace;font-size:0.8rem;color:#64748B;">#PRJ-001</td>
+                <td><strong>TechBuild Corp</strong></td>
+                <td>Senior Electrician – Residential Wiring</td>
+                <td>2026-07-28</td>
+                <td><span class="badge badge-yellow"><i class="fas fa-circle" style="font-size:6px;"></i> In Progress</span></td>
+                <td>
+                    <button class="btn-action btn-view" title="View Details" onclick="showDashToast('Project details opened')"><i class="fas fa-eye"></i></button>
+                    <button class="btn-action btn-approve" title="Mark Complete" onclick="showDashToast('Project marked as complete!')"><i class="fas fa-check"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Completed Projects -->
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-history"></i> Completed Projects History</div>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Client / Company</th>
+                <th>Service Details</th>
+                <th>Completed Date</th>
+                <th>Rating</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6" style="text-align:center;padding:40px;color:#9CA3AF;font-size:0.875rem;">
+                    <i class="fas fa-check-double" style="font-size:2rem;margin-bottom:12px;display:block;color:#E2ECE9;"></i>
+                    No completed projects in your history. Finish active projects to build your portfolio!
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

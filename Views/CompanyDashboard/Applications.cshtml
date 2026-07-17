@@ -1,0 +1,124 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Job Applications";
+    ViewBag.PageTitle = "Applications";
+    ViewBag.ActivePage = "Applications";
+}
+
+<div class="page-header">
+    <h1>Job Applications</h1>
+    <p>Review applications submitted by licensed electricians for your active jobs</p>
+</div>
+
+<!-- Filters Bar -->
+<div class="form-card" style="padding:18px 22px; margin-bottom:20px;">
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+        <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+            <select class="form-select" style="width:200px;">
+                <option value="">Filter by Job Post</option>
+                <option>Senior Electrician</option>
+                <option>Commercial Inspector</option>
+            </select>
+            <select class="form-select" style="width:160px;">
+                <option value="">Filter by Status</option>
+                <option>Pending</option>
+                <option>Accepted</option>
+                <option>Rejected</option>
+            </select>
+        </div>
+        <div class="search-field" style="margin:0;">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search applicants...">
+        </div>
+    </div>
+</div>
+
+<!-- Applications Listing -->
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-users-cog"></i> Applicants List</div>
+        <span class="badge badge-blue">Total: 3 Received</span>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Applicant</th>
+                <th>Job Applied For</th>
+                <th>Experience</th>
+                <th>Applied Date</th>
+                <th>Rating</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <div style="width:34px;height:34px;background:linear-gradient(135deg,#1F8A6B,#6BCB9E);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.8rem;">AH</div>
+                        <div>
+                            <div style="font-weight:700;color:#1E293B;">Abdul Hameed</div>
+                            <div style="font-size:0.75rem;color:#64748B;">hameed@example.com</div>
+                        </div>
+                    </div>
+                </td>
+                <td><strong>Senior Electrician</strong></td>
+                <td>8 Years</td>
+                <td>2026-07-10</td>
+                <td><span style="color:#d97706;font-weight:600;">4.8 ★</span></td>
+                <td><span class="badge badge-yellow"><i class="fas fa-circle" style="font-size:6px;"></i> Pending</span></td>
+                <td>
+                    <button class="btn-action btn-approve" title="Accept Candidate" onclick="actionCandidate('Abdul Hameed', 'Accepted')"><i class="fas fa-check"></i></button>
+                    <button class="btn-action btn-delete" title="Reject Candidate" onclick="actionCandidate('Abdul Hameed', 'Rejected')"><i class="fas fa-times"></i></button>
+                    <button class="btn-action btn-view" title="Contact / Message" onclick="location.href='/CompanyDashboard/Messages'"><i class="fas fa-envelope"></i></button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <div style="width:34px;height:34px;background:linear-gradient(135deg,#1F8A6B,#6BCB9E);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.8rem;">MR</div>
+                        <div>
+                            <div style="font-weight:700;color:#1E293B;">Mohsin Raza</div>
+                            <div style="font-size:0.75rem;color:#64748B;">mohsin@example.com</div>
+                        </div>
+                    </div>
+                </td>
+                <td><strong>Commercial Inspector</strong></td>
+                <td>12 Years</td>
+                <td>2026-07-12</td>
+                <td><span style="color:#d97706;font-weight:600;">4.9 ★</span></td>
+                <td><span class="badge badge-green"><i class="fas fa-circle" style="font-size:6px;"></i> Accepted</span></td>
+                <td>
+                    <span class="badge badge-green" style="font-size:0.75rem;">Selected</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <div style="width:34px;height:34px;background:linear-gradient(135deg,#1F8A6B,#6BCB9E);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:0.8rem;">KM</div>
+                        <div>
+                            <div style="font-weight:700;color:#1E293B;">Khalid Mehmood</div>
+                            <div style="font-size:0.75rem;color:#64748B;">khalid@example.com</div>
+                        </div>
+                    </div>
+                </td>
+                <td><strong>Senior Electrician</strong></td>
+                <td>5 Years</td>
+                <td>2026-07-08</td>
+                <td><span style="color:#d97706;font-weight:600;">4.2 ★</span></td>
+                <td><span class="badge badge-red"><i class="fas fa-circle" style="font-size:6px;"></i> Rejected</span></td>
+                <td>
+                    <span class="badge badge-red" style="font-size:0.75rem;">Rejected</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+<script>
+    function actionCandidate(name, action) {
+        showDashToast(name + ' has been marked as ' + action + '!');
+    }
+</script>
+}

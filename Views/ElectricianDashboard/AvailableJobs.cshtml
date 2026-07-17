@@ -1,0 +1,96 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Available Jobs";
+    ViewBag.PageTitle = "Available Jobs";
+    ViewBag.ActivePage = "AvailableJobs";
+}
+
+<div class="page-header">
+    <h1>Available Jobs</h1>
+    <p>Browse and apply to open electrical jobs near you</p>
+</div>
+
+<!-- Filters -->
+<div class="form-card" style="padding:18px 22px; margin-bottom:20px;">
+    <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <div style="position:relative; flex:1; min-width:200px;">
+            <i class="fas fa-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#9CA3AF;font-size:0.85rem;"></i>
+            <input type="text" class="form-input" style="padding-left:36px; margin:0;" placeholder="Search by title, location...">
+        </div>
+        <select class="form-select" style="width:160px;">
+            <option value="">All Types</option>
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Contract</option>
+        </select>
+        <select class="form-select" style="width:160px;">
+            <option value="">All Cities</option>
+            <option>Lahore</option>
+            <option>Karachi</option>
+            <option>Islamabad</option>
+            <option>Rawalpindi</option>
+        </select>
+        <button class="btn-primary-dash"><i class="fas fa-filter"></i> Filter</button>
+    </div>
+</div>
+
+<!-- Jobs List -->
+<div style="display:flex; flex-direction:column; gap:16px;">
+
+    @{
+        var jobs = new[]
+        {
+            new { Id = 1, Title = "Senior Electrician – Residential", Company = "TechBuild Corp", Location = "Lahore", Type = "Full Time", Pay = "Rs. 25,000 – 35,000/mo", Posted = "2 days ago", Urgent = true, Desc = "We need a licensed electrician for residential wiring and panel installations. Minimum 3 years experience required." },
+            new { Id = 2, Title = "Commercial Electrical Inspector", Company = "Power Systems Ltd", Location = "Karachi", Type = "Contract", Pay = "Rs. 18,000/project", Posted = "5 days ago", Urgent = false, Desc = "Inspect commercial electrical panels, wiring, and safety compliance. NEC certification preferred." },
+            new { Id = 3, Title = "Solar Panel Installation Technician", Company = "GreenEnergy Pvt", Location = "Islamabad", Type = "Part Time", Pay = "Rs. 1,200/hr", Posted = "1 week ago", Urgent = false, Desc = "Install and maintain solar panel systems for residential and commercial clients. Training provided." },
+            new { Id = 4, Title = "Industrial Maintenance Electrician", Company = "FactoryPro Industries", Location = "Faisalabad", Type = "Full Time", Pay = "Rs. 40,000 – 55,000/mo", Posted = "3 days ago", Urgent = true, Desc = "Maintain industrial electrical systems, motors, and control panels. PLC knowledge is a plus." },
+            new { Id = 5, Title = "Electrical Safety Auditor", Company = "SafetyFirst Consulting", Location = "Lahore", Type = "Contract", Pay = "Rs. 30,000/project", Posted = "1 day ago", Urgent = true, Desc = "Conduct electrical safety audits for commercial buildings and prepare NEC-compliant reports." },
+        };
+    }
+
+    @foreach (var job in jobs)
+    {
+        <div class="form-card" style="padding:22px; position:relative; transition:box-shadow 0.2s;" onmouseenter="this.style.boxShadow='0 8px 24px rgba(31,138,107,0.12)'" onmouseleave="this.style.boxShadow='none'">
+            @if (job.Urgent)
+            {
+                <span class="badge badge-red" style="position:absolute;top:16px;right:20px;font-size:0.7rem;">
+                    <i class="fas fa-fire"></i> Urgent
+                </span>
+            }
+            <div style="display:flex; gap:16px; align-items:flex-start;">
+                <div style="width:48px;height:48px;background:rgba(31,138,107,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#1F8A6B;font-size:1.1rem;flex-shrink:0;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div style="flex:1;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px; flex-wrap:wrap;">
+                        <h3 style="font-size:0.95rem;font-weight:700;color:#1E293B;">@job.Title</h3>
+                        <span class="badge badge-blue">@job.Type</span>
+                    </div>
+                    <div style="font-size:0.82rem;color:#64748B;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:10px;">
+                        <span><i class="fas fa-building" style="color:#1F8A6B;margin-right:5px;"></i>@job.Company</span>
+                        <span><i class="fas fa-map-marker-alt" style="color:#1F8A6B;margin-right:5px;"></i>@job.Location</span>
+                        <span><i class="fas fa-money-bill-wave" style="color:#1F8A6B;margin-right:5px;"></i>@job.Pay</span>
+                        <span><i class="fas fa-clock" style="color:#9CA3AF;margin-right:5px;"></i>@job.Posted</span>
+                    </div>
+                    <p style="font-size:0.82rem;color:#64748B;line-height:1.6;margin-bottom:14px;">@job.Desc</p>
+                    <div style="display:flex;gap:10px;">
+                        <button class="btn-primary-dash" style="padding:8px 18px;font-size:0.82rem;" onclick="applyJob(@job.Id)">
+                            <i class="fas fa-paper-plane"></i> Apply Now
+                        </button>
+                        <button class="btn-outline-dash" style="padding:8px 18px;font-size:0.82rem;">
+                            <i class="fas fa-bookmark"></i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+<script>
+    function applyJob(id) {
+        showDashToast('Application submitted for Job #' + id + '!');
+    }
+</script>
+}

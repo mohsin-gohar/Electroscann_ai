@@ -1,0 +1,58 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Payments History";
+    ViewBag.PageTitle = "Payments";
+    ViewBag.ActivePage = "Payments";
+}
+
+<div class="page-header">
+    <h1>Payments & Billing</h1>
+    <p>View your past payment statements, receipts, and invoice records</p>
+</div>
+
+<!-- Payments Stats -->
+<div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+        <div class="stat-value">Rs. 0</div>
+        <div class="stat-label">Total Amount Paid</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="stat-value">Rs. 0</div>
+        <div class="stat-label">Pending Invoices</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="stat-value">0</div>
+        <div class="stat-label">Successful Transactions</div>
+    </div>
+</div>
+
+<!-- Transaction History List -->
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-receipt"></i> Receipts list</div>
+        <button class="btn-outline-dash" onclick="showDashToast('Payments statement exported!')"><i class="fas fa-download"></i> Export Statement</button>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Receipt ID</th>
+                <th>Service Details</th>
+                <th>Paid Date</th>
+                <th>Billing Method</th>
+                <th>Amount Paid</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6" style="text-align:center;padding:40px;color:#9CA3AF;font-size:0.875rem;">
+                    <i class="fas fa-credit-card" style="font-size:2rem;margin-bottom:12px;display:block;color:#E2ECE9;"></i>
+                    No billing history or payments recorded on your account yet.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

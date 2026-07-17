@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -107,5 +107,279 @@
         <i class="fas fa-check-circle" style="color: var(--moss); font-size: 1.3rem;"></i>
         <span id="toastText">Analysis complete</span>
     </div>
+
+    <!-- Interactive script for webcam and drag-and-drop upload -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let stream = null;
+            const startCameraBtn = document.getElementById("startCameraBtn");
+            const cameraPreviewArea = document.getElementById("cameraPreviewArea");
+            const cameraLoading = document.getElementById("cameraLoading");
+            const resultsPanel = document.getElementById("resultsPanel");
+
+            const fileInput = document.getElementById("fileInput");
+            const uploadBtn = document.getElementById("uploadBtn");
+            const dropZone = document.getElementById("dropZone");
+            const uploadLoading = document.getElementById("uploadLoading");
+
+            const confidenceFill = document.getElementById("confidenceFill");
+            const confidenceScore = document.getElementById("confidenceScore");
+            const safetyScore = document.getElementById("safetyScore");
+            const riskBadge = document.getElementById("riskBadge");
+            const issuesList = document.getElementById("issuesList");
+
+            const newScanBtn = document.getElementById("newScanBtn");
+            const downloadReportBtn = document.getElementById("downloadReportBtn");
+
+            // Web Camera Implementation
+            if (startCameraBtn) {
+                startCameraBtn.addEventListener("click", async function () {
+                    try {
+                        // Request user camera stream
+                        stream = await navigator.mediaDevices.getUserMedia({
+                            video: { facingMode: "environment" },
+                            audio: false
+                        });
+
+                        // Set up video preview inside preview area
+                        cameraPreviewArea.innerHTML = `
+                            <div style="position: relative; width: 100%; height: 100%; min-height: 250px; overflow: hidden; border-radius: 16px;">
+                                <video id="webcamVideo" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; background: #000;"></video>
+                                <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
+                                    <button class="btn-premium" id="captureFrameBtn" style="background: #e67e22; border: none; padding: 10px 20px; font-weight: 600;"><i class="fas fa-camera"></i> Capture Frame</button>
+                                    <button class="btn-premium" id="stopCameraBtn" style="background: rgba(0,0,0,0.6); border: none; padding: 10px 20px;"><i class="fas fa-times"></i> Stop</button>
+                                </div>
+                            </div>
+                        `;
+
+                        const video = document.getElementById("webcamVideo");
+                        video.srcObject = stream;
+
+                        // Capture frame action
+                        document.getElementById("captureFrameBtn").addEventListener("click", function () {
+                            // Play shutter sound or effect
+                            showToast("Capturing wire frame...");
+                            cameraLoading.style.display = "flex";
+
+                            setTimeout(() => {
+                                stopVideoStream();
+                                runSimulationAnalysis(true);
+                            }, 1500);
+                        });
+
+                        // Stop action
+                        document.getElementById("stopCameraBtn").addEventListener("click", function () {
+                            stopVideoStream();
+                            resetCameraArea();
+                        });
+
+                    } catch (err) {
+                        console.error("Camera access error:", err);
+                        showToast("Error: Could not access web camera. Please check permissions.", true);
+                    }
+                });
+            }
+
+            function stopVideoStream() {
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                    stream = null;
+                }
+            }
+
+            function resetCameraArea() {
+                cameraPreviewArea.innerHTML = `
+                    <div style="text-align: center; color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 12px; display: block;"></i>
+                        <p>Camera preview ready</p>
+                        <button class="btn-premium btn-orange" id="startCameraBtn" style="padding: 10px 24px; font-size: 0.85rem;"><span class="blink-dot"></span> Start Camera</button>
+                    </div>
+                `;
+                // Re-bind click event
+                const newBtn = document.getElementById("startCameraBtn");
+                newBtn.addEventListener("click", startCameraBtn.click);
+            }
+
+            // Drag and Drop Upload Implementation
+            if (uploadBtn && fileInput) {
+                uploadBtn.addEventListener("click", function () {
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener("change", function (e) {
+                    if (e.target.files.length > 0) {
+                        handleFileSelection(e.target.files[0]);
+                    }
+                });
+            }
+
+            if (dropZone) {
+                dropZone.addEventListener("dragover", function (e) {
+                    e.preventDefault();
+                    dropZone.style.borderColor = "var(--primary)";
+                    dropZone.style.background = "rgba(31, 138, 107, 0.05)";
+                });
+
+                ["dragleave", "drop"].forEach(eventName => {
+                    dropZone.addEventListener(eventName, function () {
+                        dropZone.style.borderColor = "var(--border-light)";
+                        dropZone.style.background = "transparent";
+                    });
+                });
+
+                dropZone.addEventListener("drop", function (e) {
+                    e.preventDefault();
+                    if (e.dataTransfer.files.length > 0) {
+                        handleFileSelection(e.dataTransfer.files[0]);
+                    }
+                });
+            }
+
+            function handleFileSelection(file) {
+                if (!file.type.startsWith("image/")) {
+                    showToast("Please upload a valid image file.", true);
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (ev) {
+                    dropZone.innerHTML = `
+                        <div style="width: 100%; max-height: 220px; overflow: hidden; border-radius: 12px;">
+                            <img src="${ev.target.result}" style="width: 100%; height: 100%; object-fit: contain; max-height: 220px;">
+                            <p style="margin-top:10px; font-size:0.8rem; color:#8AA79A;">${file.name}</p>
+                        </div>
+                    `;
+                    uploadLoading.style.display = "flex";
+
+                    setTimeout(() => {
+                        runSimulationAnalysis(false);
+                    }, 1800);
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Simulated AI Scan Analysis Results Generation
+            function runSimulationAnalysis(isCamera) {
+                if (isCamera) {
+                    cameraLoading.style.display = "none";
+                } else {
+                    uploadLoading.style.display = "none";
+                }
+
+                // Make results visible
+                resultsPanel.style.display = "block";
+                resultsPanel.scrollIntoView({ behavior: "smooth" });
+
+                // Random safety values & risk status simulation
+                const confidence = Math.floor(Math.random() * 15) + 82; // 82 - 97%
+                const safety = Math.floor(Math.random() * 25) + 70; // 70 - 95
+                
+                let riskText = "LOW";
+                let riskClass = "risk-low";
+                let anomalies = [];
+
+                if (safety < 75) {
+                    riskText = "HIGH";
+                    riskClass = "risk-high";
+                    anomalies = [
+                        { type: "Thermal Anomaly", detail: "Overheated main breaker connection detected at phase A (92°C)." },
+                        { type: "NEC Code Violation", detail: "Improper cable routing & open wiring joints outside secondary junction box." }
+                    ];
+                } else if (safety < 88) {
+                    riskText = "MEDIUM";
+                    riskClass = "risk-medium";
+                    anomalies = [
+                        { type: "Junction Box Dust", detail: "Significant dust & debris accumulation inside distribution panel cabinet." }
+                    ];
+                } else {
+                    riskText = "LOW";
+                    riskClass = "risk-low";
+                    anomalies = [];
+                }
+
+                // Set values to DOM
+                confidenceScore.innerText = `${confidence}%`;
+                confidenceFill.style.width = `${confidence}%`;
+                safetyScore.innerText = safety;
+                
+                riskBadge.innerText = riskText;
+                riskBadge.className = `risk-badge ${riskClass}`;
+
+                // Populate anomalies list
+                if (anomalies.length === 0) {
+                    issuesList.innerHTML = `
+                        <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 10px; color: #166534;">
+                            <i class="fas fa-check-circle" style="font-size: 1.2rem;"></i>
+                            <span>No major electrical anomalies or compliance violations detected. Your system meets safety parameters.</span>
+                        </div>
+                    `;
+                } else {
+                    issuesList.innerHTML = anomalies.map(issue => `
+                        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px;">
+                            <i class="fas fa-exclamation-triangle" style="color: #D97706; font-size: 1.2rem; margin-top: 2px;"></i>
+                            <div>
+                                <strong style="color: #92400E; display: block; font-size: 0.9rem;">${issue.type}</strong>
+                                <span style="color: #B45309; font-size: 0.82rem; line-height:1.4; display:block; margin-top:2px;">${issue.detail}</span>
+                            </div>
+                        </div>
+                    `).join("");
+                }
+
+                showToast("AI Diagnostic Report Generated Successfully! 🎉");
+            }
+
+            // New Scan / Redo button action
+            if (newScanBtn) {
+                newScanBtn.addEventListener("click", function () {
+                    resultsPanel.style.display = "none";
+                    resetCameraArea();
+                    
+                    // Reset upload area
+                    dropZone.innerHTML = `
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: var(--moss); margin-bottom: 12px; display: block;"></i>
+                        <p style="font-weight: 500;">Drag & drop electrical panel image</p>
+                        <p style="color: #8AA79A; font-size: 0.8rem;">or</p>
+                        <button class="btn-premium btn-orange" id="uploadBtn" style="padding: 10px 28px; font-size: 0.85rem;"><i class="fas fa-folder-open"></i> Browse Files</button>
+                    `;
+                    // Re-bind browse click event
+                    document.getElementById("uploadBtn").addEventListener("click", function () {
+                        fileInput.click();
+                    });
+                    
+                    showToast("Scanner reset. Ready for new input.");
+                });
+            }
+
+            // Download PDF Report action
+            if (downloadReportBtn) {
+                downloadReportBtn.addEventListener("click", function () {
+                    showToast("Preparing PDF generation...");
+                    
+                    // Trigger native print flow styled for report
+                    window.print();
+                });
+            }
+
+            function showToast(msg, isError = false) {
+                const toast = document.getElementById("toastMsg");
+                const text = document.getElementById("toastText");
+                const icon = toast.querySelector("i");
+                
+                text.textContent = msg;
+                if (isError) {
+                    icon.className = "fas fa-exclamation-circle";
+                    toast.style.background = "#991B1B";
+                } else {
+                    icon.className = "fas fa-check-circle";
+                    toast.style.background = "#0B2B26";
+                }
+                
+                toast.style.display = "flex";
+                setTimeout(() => {
+                    toast.style.display = "none";
+                }, 3000);
+            }
+        });
+    </script>
 </body>
 </html>

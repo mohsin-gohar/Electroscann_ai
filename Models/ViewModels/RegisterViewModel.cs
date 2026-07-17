@@ -41,23 +41,22 @@ namespace Electroscann_ai.Models.ViewModels
 
         // Electrician Specific Fields
         [Display(Name = "License Number")]
-        public string LicenseNumber { get; set; }
+        public string? LicenseNumber { get; set; }
 
         [Display(Name = "Specialization")]
-        public string Specialization { get; set; }
+        public string? Specialization { get; set; }
 
         [Display(Name = "Years of Experience")]
-        [Range(0, 50)]
-        public int YearsOfExperience { get; set; }
+        public string? YearsOfExperience { get; set; }
 
         // Company Specific Fields
         [Display(Name = "Company Name")]
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         [Display(Name = "NTN Number")]
-        public string NTNNumber { get; set; }
+        public string? NTNNumber { get; set; }
 
         [Display(Name = "Industry")]
-        public string Industry { get; set; }
+        public string? Industry { get; set; }
     }
 }

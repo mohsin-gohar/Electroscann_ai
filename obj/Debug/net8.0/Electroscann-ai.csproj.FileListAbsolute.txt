@@ -235,6 +235,7 @@ D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.MvcApplicationPartsAssemblyInfo.cache
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.RazorAssemblyInfo.cache
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.RazorAssemblyInfo.cs
+D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.sourcelink.json
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\rjimswa.dswa.cache.json
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -246,7 +247,6 @@ D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\staticwebasse
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\staticwebassets.development.json
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\swae.build.ex.cache
-D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electros.0DD348AC.Up2Date
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.dll
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\refint\Electroscann-ai.dll

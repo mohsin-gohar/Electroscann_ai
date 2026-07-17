@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -122,6 +123,45 @@ namespace Electroscann_ai.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            if (model.Role == UserRole.Electrician)
+            {
+                if (string.IsNullOrWhiteSpace(model.LicenseNumber))
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.LicenseNumber), "License number is required for electricians.");
+                }
+
+                if (string.IsNullOrWhiteSpace(model.Specialization))
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.Specialization), "Specialization is required for electricians.");
+                }
+            }
+            else if (model.Role == UserRole.Company)
+            {
+                if (string.IsNullOrWhiteSpace(model.CompanyName))
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.CompanyName), "Company name is required for companies.");
+                }
+
+                if (string.IsNullOrWhiteSpace(model.NTNNumber))
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.NTNNumber), "NTN number is required for companies.");
+                }
+
+                if (string.IsNullOrWhiteSpace(model.Industry))
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.Industry), "Industry is required for companies.");
+                }
+            }
+
+            var yearsOfExperienceValue = model.YearsOfExperience?.Trim();
+            if (!string.IsNullOrWhiteSpace(yearsOfExperienceValue))
+            {
+                if (!int.TryParse(yearsOfExperienceValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedYears) || parsedYears < 0 || parsedYears > 50)
+                {
+                    ModelState.AddModelError(nameof(RegisterViewModel.YearsOfExperience), "Years of experience must be a whole number between 0 and 50.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 // Check if email already exists
@@ -130,6 +170,12 @@ namespace Electroscann_ai.Controllers
                 {
                     ModelState.AddModelError("Email", "Email already registered.");
                     return View(model);
+                }
+
+                var yearsOfExperience = 0;
+                if (int.TryParse(yearsOfExperienceValue, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
+                {
+                    yearsOfExperience = parsedValue;
                 }
 
                 // Create new user
@@ -160,9 +206,9 @@ namespace Electroscann_ai.Controllers
                         var electrician = new Electrician
                         {
                             UserId = user.Id,
-                            LicenseNumber = model.LicenseNumber ?? "",
-                            Specialization = model.Specialization ?? "",
-                            YearsOfExperience = model.YearsOfExperience,
+                            LicenseNumber = model.LicenseNumber ?? string.Empty,
+                            Specialization = model.Specialization ?? string.Empty,
+                            YearsOfExperience = yearsOfExperience,
                             IsVerified = false,
                             CreatedAt = DateTime.UtcNow,
                             Rating = 0,
@@ -176,9 +222,9 @@ namespace Electroscann_ai.Controllers
                         var company = new Company
                         {
                             UserId = user.Id,
-                            CompanyName = model.CompanyName ?? "",
-                            NTNNumber = model.NTNNumber ?? "",
-                            Industry = model.Industry ?? "",
+                            CompanyName = model.CompanyName ?? string.Empty,
+                            NTNNumber = model.NTNNumber ?? string.Empty,
+                            Industry = model.Industry ?? string.Empty,
                             IsVerified = false,
                             CreatedAt = DateTime.UtcNow
                         };

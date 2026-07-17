@@ -1,0 +1,161 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "My Profile";
+    ViewBag.PageTitle = "My Profile";
+    ViewBag.ActivePage = "Profile";
+}
+
+<div class="page-header">
+    <h1>My Profile</h1>
+    <p>Manage your professional information and settings</p>
+</div>
+
+<div style="display:grid; grid-template-columns: 280px 1fr; gap: 24px;">
+    <!-- Profile Card -->
+    <div>
+        <div class="form-card" style="text-align:center; padding:28px;">
+            <div style="width:80px;height:80px;background:linear-gradient(135deg,#1F8A6B,#6BCB9E);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:#fff;font-size:1.8rem;">
+                <i class="fas fa-user"></i>
+            </div>
+            <h3 style="font-size:1rem;font-weight:700;color:#1E293B;margin-bottom:4px;">@User.Identity.Name</h3>
+            <p style="font-size:0.8rem;color:#1F8A6B;font-weight:600;margin-bottom:16px;">Licensed Electrician</p>
+            <span class="badge badge-green" style="font-size:0.75rem;padding:6px 14px;">
+                <i class="fas fa-circle" style="font-size:6px;"></i> Profile Active
+            </span>
+
+            <div style="margin-top:20px;border-top:1px solid #E2ECE9;padding-top:16px;text-align:left;">
+                <div style="font-size:0.8rem;color:#64748B;display:flex;flex-direction:column;gap:10px;">
+                    <div><i class="fas fa-envelope" style="width:18px;color:#1F8A6B;"></i> @User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value</div>
+                    <div><i class="fas fa-map-marker-alt" style="width:18px;color:#1F8A6B;"></i> City not set</div>
+                    <div><i class="fas fa-calendar" style="width:18px;color:#1F8A6B;"></i> Joined 2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verification Status -->
+        <div class="form-card" style="padding:20px;">
+            <div style="font-size:0.8rem;font-weight:700;color:#374151;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.5px;">Verification Status</div>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:0.82rem;">
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <span style="color:#64748B;">Email Verified</span>
+                    <span class="badge badge-yellow">Pending</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <span style="color:#64748B;">License Verified</span>
+                    <span class="badge badge-yellow">Pending</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                    <span style="color:#64748B;">Profile Complete</span>
+                    <span class="badge badge-green">Done</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Form -->
+    <div>
+        <div class="form-card">
+            <div style="font-size:1rem;font-weight:700;color:#1E293B;margin-bottom:20px;display:flex;align-items:center;gap:8px;">
+                <i class="fas fa-user-edit" style="color:#1F8A6B;"></i> Edit Profile
+            </div>
+
+            <form>
+                <div class="section-label" style="font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;padding:0 4px;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                    Personal Information
+                    <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+                </div>
+
+                <div class="form-grid" style="margin-bottom:20px;">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" value="@User.Identity.Name" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" value="@User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value" readonly style="background:#F8FAFA;color:#9CA3AF;">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" placeholder="+92 300 0000000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-input" placeholder="Lahore, Karachi...">
+                    </div>
+                </div>
+
+                <div class="section-label" style="font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9CA3AF;padding:0 4px;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+                    Professional Details
+                    <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+                </div>
+
+                <div class="form-grid" style="margin-bottom:20px;">
+                    <div class="form-group">
+                        <label class="form-label">License Number</label>
+                        <input type="text" class="form-input" placeholder="PEC-XXXX-XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Years of Experience</label>
+                        <input type="number" class="form-input" placeholder="e.g. 5" min="0" max="60">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Specialization</label>
+                        <select class="form-select">
+                            <option>Residential Wiring</option>
+                            <option>Commercial Wiring</option>
+                            <option>Industrial Wiring</option>
+                            <option>Solar Installation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hourly Rate (Rs.)</label>
+                        <input type="number" class="form-input" placeholder="e.g. 500">
+                    </div>
+                    <div class="form-group" style="grid-column:1/-1;">
+                        <label class="form-label">Bio / About Me</label>
+                        <textarea class="form-input" rows="3" placeholder="Brief professional summary..."></textarea>
+                    </div>
+                </div>
+
+                <div style="display:flex;gap:12px;">
+                    <button type="button" class="btn-primary-dash" onclick="showDashToast('Profile updated successfully!')">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <button type="button" class="btn-outline-dash">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Change Password -->
+        <div class="form-card">
+            <div style="font-size:1rem;font-weight:700;color:#1E293B;margin-bottom:20px;display:flex;align-items:center;gap:8px;">
+                <i class="fas fa-lock" style="color:#1F8A6B;"></i> Change Password
+            </div>
+            <div class="form-grid">
+                <div class="form-group full">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" class="form-input" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <input type="password" class="form-input" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" class="form-input" placeholder="••••••••">
+                </div>
+            </div>
+            <div style="margin-top:16px;">
+                <button type="button" class="btn-primary-dash" onclick="showDashToast('Password updated!')">
+                    <i class="fas fa-key"></i> Update Password
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<style>
+    .section-label { display: flex; align-items: center; gap: 8px; }
+</style>
+}

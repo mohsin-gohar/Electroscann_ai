@@ -1,0 +1,53 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Notifications";
+    ViewBag.PageTitle = "Notifications";
+    ViewBag.ActivePage = "Notifications";
+}
+
+<div class="page-header">
+    <h1>Notifications</h1>
+    <p>Stay updated with application reviews, messages, and matches</p>
+</div>
+
+<!-- Notifications Box -->
+<div class="form-card" style="padding:0;">
+    <div style="padding:16px 20px; border-bottom:1px solid #E2ECE9; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.9rem; font-weight:700; color:#1E293B;"><i class="fas fa-bell" style="color:#1F8A6B;margin-right:8px;"></i> Recent Alerts</span>
+        <button class="btn-outline-dash" style="padding:6px 12px; font-size:0.75rem;" onclick="showDashToast('All marked as read!')">Mark all as read</button>
+    </div>
+
+    <div style="display:flex; flex-direction:column;">
+        @{
+            var alerts = new[]
+            {
+                new { Icon = "fas fa-briefcase", Color = "#3b82f6", Title = "New Job Matching Your Profile", Desc = "TechBuild Corp posted 'Senior Electrician – Residential' in Lahore matching your specialization.", Time = "2 hours ago", Unread = true },
+                new { Icon = "fas fa-check-circle", Color = "#22c55e", Title = "Application Accepted", Desc = "Your application for 'Commercial Panel Inspector' has been accepted. Contact the employer.", Time = "1 day ago", Unread = false },
+                new { Icon = "fas fa-comment-dots", Color = "#a855f7", Title = "New Message Received", Desc = "TechBuild Corp sent you a message: 'We'd like to interview you tomorrow...'", Time = "2 days ago", Unread = true },
+                new { Icon = "fas fa-exclamation-triangle", Color = "#eab308", Title = "Profile Verification Required", Desc = "Please upload your PEC License documents in your profile section to unlock premium jobs.", Time = "5 days ago", Unread = false },
+            };
+        }
+
+        @foreach (var alert in alerts)
+        {
+            <div style="display:flex; gap:16px; padding:18px 20px; border-bottom:1px solid #F0F5F3; background:@(alert.Unread ? "rgba(31,138,107,0.04)" : "transparent"); transition:background 0.2s;"
+                 onmouseenter="this.style.background='rgba(31,138,107,0.06)'"
+                 onmouseleave="this.style.background='@(alert.Unread ? "rgba(31,138,107,0.04)" : "transparent")'">
+                <div style="width:38px; height:38px; border-radius:10px; background:rgba(31,138,107,0.1); color:@alert.Color; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.95rem;">
+                    <i class="@alert.Icon"></i>
+                </div>
+                <div style="flex:1;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:4px; flex-wrap:wrap; gap:8px;">
+                        <h4 style="font-size:0.875rem; font-weight:700; color:#1E293B;">@alert.Title</h4>
+                        <span style="font-size:0.72rem; color:#9CA3AF;">@alert.Time</span>
+                    </div>
+                    <p style="font-size:0.82rem; color:#64748B; line-height:1.5;">@alert.Desc</p>
+                </div>
+                @if (alert.Unread)
+                {
+                    <div style="width:8px; height:8px; background:#1F8A6B; border-radius:50%; align-self:center; flex-shrink:0;"></div>
+                }
+            </div>
+        }
+    </div>
+</div>

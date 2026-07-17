@@ -1,75 +1,107 @@
 @{
     Layout = "_DashboardLayout";
+    ViewBag.Title = "Admin Dashboard";
+    ViewBag.PageTitle = "Dashboard";
+    ViewBag.ActivePage = "Dashboard";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | ElectroScan AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="~/css/site.css">
-    <script src="~/js/site.js"></script>
-</head>
-<body>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="top-bar">
-            <div class="page-title">
-                <h1>Dashboard</h1>
-                <p>Welcome back, Admin</p>
-            </div>
-            <div class="user-menu">
-                <button class="notification-btn"><i class="fas fa-bell"></i><span class="notification-badge">4</span></button>
-                <div class="user-avatar"><i class="fas fa-user-shield"></i></div>
-            </div>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">2,845</div><div class="stat-label">Total Users</div><div class="stat-change change-positive"><i class="fas fa-arrow-up"></i> +12%</div></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-bolt"></i></div><div class="stat-value">156</div><div class="stat-label">Electricians</div><div class="stat-change change-positive"><i class="fas fa-arrow-up"></i> +8</div></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-building"></i></div><div class="stat-value">89</div><div class="stat-label">Companies</div><div class="stat-change change-positive"><i class="fas fa-arrow-up"></i> +5</div></div>
-            <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$48.2K</div><div class="stat-label">Revenue (MTD)</div><div class="stat-change change-positive"><i class="fas fa-arrow-up"></i> +18%</div></div>
-        </div>
-
-        <!-- Charts Row -->
-        <div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
-            <div class="stat-card"><h4 style="margin-bottom: 16px;">Revenue Trend</h4><canvas id="revenueChart" height="200"></canvas></div>
-            <div class="stat-card"><h4 style="margin-bottom: 16px;">AI Scans Overview</h4><canvas id="scansChart" height="200"></canvas></div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="table-card">
-            <div class="table-header"><h3><i class="fas fa-history"></i> Recent Activities</h3><a href="#" style="color: var(--primary);">View All</a></div>
-            <table class="data-table">
-                <thead><tr><th>User</th><th>Action</th><th>Date</th><th>Status</th></tr></thead>
-                <tbody>
-                    <tr><td>Ahmed Raza</td><td>Completed AI Scan</td><td>2026-06-09</td><td><span class="status-badge status-active">Completed</span></td></tr>
-                    <tr><td>Sarah Khan</td><td>Registered as Electrician</td><td>2026-06-08</td><td><span class="status-badge status-pending">Pending</span></td></tr>
-                    <tr><td>Tech Solutions</td><td>Company Subscription</td><td>2026-06-08</td><td><span class="status-badge status-active">Active</span></td></tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+<div class="page-header">
+    <h1>Welcome back, @User.Identity?.Name 👋</h1>
+    <p>Platform overview — users, revenue, AI scans, and recent activity.</p>
 </div>
-<div id="globalToast" class="toast-msg" style="display: none;"></div>
 
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-value">2,845</div>
+        <div class="stat-label">Total Users</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +12%</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+        <div class="stat-value">156</div>
+        <div class="stat-label">Electricians</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +8</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-building"></i></div>
+        <div class="stat-value">89</div>
+        <div class="stat-label">Companies</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +5</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+        <div class="stat-value">$48.2K</div>
+        <div class="stat-label">Revenue (MTD)</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +18%</div>
+    </div>
+</div>
+
+<div class="stats-grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="chart-card">
+        <div class="chart-card-title"><i class="fas fa-chart-line"></i> Revenue Trend</div>
+        <canvas id="revenueChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+        <div class="chart-card-title"><i class="fas fa-microscope"></i> AI Scans Overview</div>
+        <canvas id="scansChart" height="200"></canvas>
+    </div>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-history"></i> Recent Activities</div>
+        <a href="#" class="btn-outline-dash">View All</a>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Action</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ahmed Raza</td>
+                <td>Completed AI Scan</td>
+                <td>2026-06-09</td>
+                <td><span class="badge badge-green">Completed</span></td>
+            </tr>
+            <tr>
+                <td>Sarah Khan</td>
+                <td>Registered as Electrician</td>
+                <td>2026-06-08</td>
+                <td><span class="badge badge-yellow">Pending</span></td>
+            </tr>
+            <tr>
+                <td>Tech Solutions</td>
+                <td>Company Subscription</td>
+                <td>2026-06-08</td>
+                <td><span class="badge badge-green">Active</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
 <script>
     new Chart(document.getElementById('revenueChart'), {
         type: 'line',
-        data: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], datasets: [{ label: 'Revenue ($K)', data: [25, 30, 35, 42, 48, 52], borderColor: '#1F8A6B', tension: 0.3, fill: false }] },
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{ label: 'Revenue ($K)', data: [25, 30, 35, 42, 48, 52], borderColor: '#1F8A6B', tension: 0.3, fill: false }]
+        },
         options: { responsive: true, maintainAspectRatio: true }
     });
     new Chart(document.getElementById('scansChart'), {
         type: 'bar',
-        data: { labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'], datasets: [{ label: 'AI Scans', data: [145, 162, 198, 245], backgroundColor: '#1F8A6B', borderRadius: 8 }] },
+        data: {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+            datasets: [{ label: 'AI Scans', data: [145, 162, 198, 245], backgroundColor: '#1F8A6B', borderRadius: 8 }]
+        },
         options: { responsive: true, maintainAspectRatio: true }
     });
 </script>
-</body>
-</html>
+}

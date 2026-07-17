@@ -1,0 +1,80 @@
+@{
+    Layout = "_DashboardLayout";
+    ViewBag.Title = "Client Dashboard";
+    ViewBag.PageTitle = "Dashboard";
+    ViewBag.ActivePage = "Home";
+}
+
+<div class="page-header">
+    <h1>Welcome back, @User.Identity.Name 👋</h1>
+    <p>Here is an overview of your electrical inspections, scans, and verified professionals.</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-microscope"></i></div>
+        <div class="stat-value">0</div>
+        <div class="stat-label">AI Scanner Tests</div>
+        <div class="stat-change up"><i class="fas fa-bolt"></i> Scans Performed</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+        <div class="stat-value">0</div>
+        <div class="stat-label">My Projects</div>
+        <div class="stat-change up"><i class="fas fa-folder-open"></i> Active Inspections</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="stat-value">0</div>
+        <div class="stat-label">Contacted Experts</div>
+        <div class="stat-change up"><i class="fas fa-phone-alt"></i> Electricians</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="stat-value">Rs. 0</div>
+        <div class="stat-label">Total Spent</div>
+        <div class="stat-change up"><i class="fas fa-money-bill-wave"></i> Transactions</div>
+    </div>
+</div>
+
+<div class="showcase-grid">
+    <div class="showcase-card">
+        <div class="icon-wrap"><i class="fas fa-microscope"></i></div>
+        <h3>Scan Electrical Panels</h3>
+        <p>Upload photos of boards or wiring to identify hazards instantly and surface actionable insights.</p>
+        <a href="/Home/AI_Scanner" class="btn-primary-dash"><i class="fas fa-upload"></i> Start AI Scan</a>
+    </div>
+    <div class="showcase-card">
+        <div class="icon-wrap"><i class="fas fa-calculator"></i></div>
+        <h3>Load Calculations</h3>
+        <p>Run standardized electrical load checks for better cable sizing and protection decisions.</p>
+        <a href="/Home/Calculator" class="btn-outline-dash"><i class="fas fa-calculator"></i> Open Calculator</a>
+    </div>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <div class="table-card-title"><i class="fas fa-history"></i> Recent AI Scans & Audits</div>
+        <a href="/Home/AI_Scanner" class="btn-outline-dash">Scan New Panel</a>
+    </div>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Scan ID</th>
+                <th>Uploaded Image</th>
+                <th>Scan Date</th>
+                <th>Calculated Load</th>
+                <th>Hazard Status</th>
+                <th>Report PDF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6" style="text-align:center;padding:40px;color:#9CA3AF;font-size:0.875rem;">
+                    <i class="fas fa-file-invoice" style="font-size:2rem;margin-bottom:12px;display:block;color:#E2ECE9;"></i>
+                    No scans performed yet. Get started by uploading a panel image!
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
