@@ -1,42 +1,52 @@
 <main>
-        <div class="blog-hero">
-            <div class="container">
-                <div class="hero-tag reveal"><i class="fas fa-newspaper"></i> LATEST INSIGHTS</div>
-                <h1 class="reveal" style="font-size: 2.8rem; font-weight: 700; letter-spacing: -0.02em;">Electrical Safety Blog</h1>
-                <p class="reveal" style="color: #5A7568; max-width: 550px; margin: 16px auto 0;">Expert insights, industry news, and AI innovation for electrical professionals</p>
+    <!-- Blog Hero -->
+    <div class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-newspaper"></i>
+                    LATEST INSIGHTS
+                </div>
+                <h1>Electrical Safety Blog</h1>
+                <p>Expert insights, industry news, and AI innovation for electrical professionals</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Search -->
+        <div class="blog-search reveal">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search articles..." />
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
         </div>
 
+        <!-- Categories -->
+        <div class="blog-categories reveal">
+            <button class="category-btn active" data-cat="all">All</button>
+            <button class="category-btn" data-cat="AI Technology">AI Technology</button>
+            <button class="category-btn" data-cat="Safety Tips">Safety Tips</button>
+            <button class="category-btn" data-cat="Industry News">Industry News</button>
+            <button class="category-btn" data-cat="Case Studies">Case Studies</button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid reveal" id="blogGrid"></div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="blog-newsletter">
         <div class="container">
-            <!-- Search Bar -->
-            <div class="search-container reveal">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search articles...">
-                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+            <div class="newsletter-card reveal">
+                <i class="fas fa-envelope-open-text"></i>
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest articles, industry insights, and AI updates delivered to your inbox.</p>
+                <div class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" />
+                    <button class="btn-primary" id="newsletterBtn">Subscribe</button>
                 </div>
             </div>
-
-            <!-- Categories -->
-            <div class="categories reveal">
-                <button class="category-btn active" data-cat="all">All</button>
-                <button class="category-btn" data-cat="AI Technology">AI Technology</button>
-                <button class="category-btn" data-cat="Safety Tips">Safety Tips</button>
-                <button class="category-btn" data-cat="Industry News">Industry News</button>
-                <button class="category-btn" data-cat="Case Studies">Case Studies</button>
-            </div>
-
-            <!-- Blog Grid -->
-            <div class="blog-grid reveal" id="blogGrid"></div>
         </div>
-
-        <!-- Newsletter Section -->
-        <div class="container newsletter-section reveal">
-            <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--mint); margin-bottom: 16px; display: inline-block;"></i>
-            <h2 style="font-size: 1.6rem;">Subscribe to Our Newsletter</h2>
-            <p style="opacity: 0.8; max-width: 480px; margin: 12px auto;">Get the latest articles, industry insights, and AI updates delivered to your inbox.</p>
-            <div class="newsletter-form">
-                <input type="email" id="newsletterEmail" placeholder="Enter your email">
-                <button class="btn-premium" style="background: white; color: var(--pine);" id="newsletterBtn">Subscribe</button>
-            </div>
-        </div>
-    </main>
+    </div>
+</main>

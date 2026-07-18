@@ -253,3 +253,4 @@ D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\refint\Electr
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.pdb
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\Electroscann-ai.genruntimeconfig.cache
 D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\ref\Electroscann-ai.dll
+D:\laravelproject\Electroscann-ai\Electroscann-ai\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,3 +1,89 @@
+/* ==================== PREMIUM HOME OVERRIDES ==================== */
+.hero-section {
+    padding: 140px 0 100px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #6BCB9E, #1F8A6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-visual img {
+    border-radius: 24px;
+    box-shadow: 0 30px 70px -20px rgba(11, 43, 38, 0.4);
+    width: 100%;
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 14px 20px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Card improvements */
+.advantage-card, .solution-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .advantage-card:hover, .solution-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px -12px rgba(31, 138, 107, 0.15);
+    }
+
+/* Responsive fixes */
+@media (max-width: 1024px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 100px 0 80px;
+    }
+
+    .main-navbar {
+        padding: 0 16px;
+    }
+}
+
 /* ============================================
    GLOBAL STYLES
    ============================================ */

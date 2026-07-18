@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Electroscann-ai")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+053bd7e3979efaca229c4d6080bad70480dcd239")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0cd8d1277131fc2e107f32eff7893288320e345")]
 [assembly: System.Reflection.AssemblyProductAttribute("Electroscann-ai")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Electroscann-ai")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

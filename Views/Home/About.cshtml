@@ -1,118 +1,189 @@
 <main>
-  <!-- Hero -->
-  <div class="about-hero">
-    <div class="container">
-      <h1 class="reveal">Intelligence That Powers<br>Electrical Safety</h1>
-      <p class="reveal">We're transforming electrical inspections with precision AI — making every building safer through intelligent automation, predictive analytics, and unmatched accuracy.</p>
-      <div class="reveal">
-         <a asp-action="About" asp-controller="Home" asp-fragment="mission" class="btn-premium"><i class="fas fa-play-circle"></i> See Our Mission</a>
-         <a asp-action="Contact" asp-controller="Home" class="btn-premium btn-outline-premium" style="margin-top: 16px;">Meet the Team →</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mission / Vision / Values cards -->
-  <div id="mission" class="container reveal">
-    <div class="mission-grid">
-      <div class="mission-card">
-        <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
-        <h3>Our Mission</h3>
-        <p>Make every electrical system safer through intelligence — eliminating preventable failures before they cause harm.</p>
-      </div>
-      <div class="mission-card">
-        <div class="mission-icon"><i class="fas fa-globe-americas"></i></div>
-        <h3>Our Vision</h3>
-        <p>A world where no building fire, outage, or electrical hazard is caused by an issue that could have been detected in advance.</p>
-      </div>
-      <div class="mission-card">
-        <div class="mission-icon"><i class="fas fa-hand-sparkles"></i></div>
-        <h3>Our Values</h3>
-        <p>Precision over speed. Transparency over shortcuts. Safety above all — for the professionals who depend on us and the people they protect.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Story + stats (matching index premium) -->
-  <div class="container story-section reveal">
-    <div class="split-layout">
-      <div class="split-text">
-        <span style="color:#1F8A6B; font-weight:600; letter-spacing:1px;">OUR STORY</span>
-        <h2>Built to close a <span style="color:#1F8A6B;">critical gap</span></h2>
-        <p style="color:#334155; line-height:1.7;">ElectroScan AI was founded by a team of electrical engineers and AI specialists who saw what traditional inspection methods were missing. Inspections were slow, prone to human error, and blind to failures before they happened.</p>
-        <p style="margin-top:16px; color:#4A6B5E;">We built an intelligent platform combining computer vision, machine learning, and deep electrical expertise — trained on millions of real-world scenarios to deliver inspection accuracy the industry had never seen.</p>
-        <div class="stats-row">
-          <div class="stat-block"><h4>2024</h4><span style="color:#5A7568;">Founded</span></div>
-          <div class="stat-block"><h4>50K+</h4><span style="color:#5A7568;">Scans completed</span></div>
-          <div class="stat-block"><h4>99.9%</h4><span style="color:#5A7568;">Detection accuracy</span></div>
+    <!-- Hero -->
+    <div class="about-hero">
+        <div class="container">
+            <div class="about-hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i>
+                    About ElectroScan AI
+                </div>
+                <h1>Intelligence That Powers<br><span class="highlight">Electrical Safety</span></h1>
+                <p>
+                    We're transforming electrical inspections with precision AI — making every building safer 
+                    through intelligent automation, predictive analytics, and unmatched accuracy.
+                </p>
+                <div class="about-hero-actions">
+                    <a asp-action="About" asp-controller="Home" asp-fragment="mission" class="btn-primary">
+                        <i class="fas fa-play-circle"></i>
+                        See Our Mission
+                    </a>
+                    <a asp-action="Contact" asp-controller="Home" class="btn-secondary">
+                        Meet the Team <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="split-media">
-        <img src="~/Image/about.jpg" alt="About ElectroScan AI" style="width:100%; border-radius: 32px; box-shadow: 0 12px 24px -8px rgba(0,0,0,0.1);" />
-        <p style="margin-top: 24px; font-weight:500;">AI-driven electrical diagnostics</p>
-      </div>
     </div>
-  </div>
 
-  <!-- Why choose us (values grid) -->
-  <div class="container values-section reveal">
-    <div style="text-align: center;">
-      <span style="color:#1F8A6B; font-weight:600;">WHY ELECTROSCAN AI</span>
-      <h2 style="font-size: 2.2rem; margin-top: 12px;">Industry-leading technology <br>meets <span style="color:#1F8A6B;">electrical expertise</span></h2>
+    <!-- Mission / Vision / Values -->
+    <div id="mission" class="mission-section">
+        <div class="container">
+            <div class="mission-grid reveal">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>Make every electrical system safer through intelligence — eliminating preventable failures before they cause harm.</p>
+                </div>
+                <div class="mission-card" style="transition-delay: 0.1s;">
+                    <div class="mission-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>A world where no building fire, outage, or electrical hazard is caused by an issue that could have been detected in advance.</p>
+                </div>
+                <div class="mission-card" style="transition-delay: 0.2s;">
+                    <div class="mission-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Precision over speed. Transparency over shortcuts. Safety above all — for the professionals who depend on us and the people they protect.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="values-grid">
-      <div class="value-card">
-        <div class="value-icon"><i class="fas fa-brain"></i></div>
-        <h4>AI-Powered Analysis</h4>
-        <p>Advanced neural networks trained on millions of electrical scenarios — detecting issues humans routinely miss.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i class="fas fa-calculator"></i></div>
-        <h4>Smart Calculations</h4>
-        <p>Automated load calculations and wire sizing based on real-world NEC standards. Zero manual math required.</p>
-      </div>
-      <div class="value-card">
-        <div class="value-icon"><i class="fas fa-file-alt"></i></div>
-        <h4>Compliance Reports</h4>
-        <p>Comprehensive, compliance-ready reports generated instantly — shareable with clients and authorities.</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Leadership team -->
-  <div class="container reveal">
-    <div style="text-align: center; margin-top: 40px;">
-      <span style="color:#1F8A6B; font-weight:600;">THE EXPERTS BEHIND THE AI</span>
-      <h2 style="font-size: 2rem;">Leadership & innovation</h2>
+    <!-- Story + Stats -->
+    <div class="story-section">
+        <div class="container">
+            <div class="story-layout reveal">
+                <div class="story-text">
+                    <span class="section-tag">OUR STORY</span>
+                    <h2>Built to close a <span class="highlight">critical gap</span></h2>
+                    <p>
+                        ElectroScan AI was founded by a team of electrical engineers and AI specialists who saw 
+                        what traditional inspection methods were missing. Inspections were slow, prone to human 
+                        error, and blind to failures before they happened.
+                    </p>
+                    <p class="story-second">
+                        We built an intelligent platform combining computer vision, machine learning, and deep 
+                        electrical expertise — trained on millions of real-world scenarios to deliver inspection 
+                        accuracy the industry had never seen.
+                    </p>
+                    <div class="story-stats">
+                        <div class="story-stat">
+                            <h4>2024</h4>
+                            <span>Founded</span>
+                        </div>
+                        <div class="story-stat">
+                            <h4>50K+</h4>
+                            <span>Scans completed</span>
+                        </div>
+                        <div class="story-stat">
+                            <h4>99.9%</h4>
+                            <span>Detection accuracy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-media">
+                    <div class="story-image-wrapper">
+                        <img src="~/Image/about.jpg" alt="About ElectroScan AI" />
+                        <div class="story-image-caption">
+                            <i class="fas fa-circle"></i>
+                            AI-driven electrical diagnostics
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar"><i class="fas fa-user-circle"></i></div>
-        <h4>Dr. Sarah Chen</h4>
-        <span style="color:#1F8A6B; font-size:0.8rem; font-weight:600;">CTO, AI Research Lead</span>
-        <p style="margin-top: 16px; color:#5A7568;">15+ years in machine learning and computer vision applied to industrial systems.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><i class="fas fa-user-tie"></i></div>
-        <h4>Michael Rodriguez</h4>
-        <span style="color:#1F8A6B; font-size:0.8rem; font-weight:600;">Head of Engineering</span>
-        <p style="margin-top: 16px; color:#5A7568;">Licensed Master Electrician with 20+ years designing large-scale electrical systems.</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar"><i class="fas fa-shield-alt"></i></div>
-        <h4>Emily Watson</h4>
-        <span style="color:#1F8A6B; font-size:0.8rem; font-weight:600;">Safety Director</span>
-        <p style="margin-top: 16px; color:#5A7568;">Certified Safety Professional, NEC compliance expert and risk auditing specialist.</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- CTA section (connect) -->
-  <div class="container cta-about reveal">
-    <h2 style="font-size: 2rem;">Ready to transform your inspections?</h2>
-    <p style="margin: 20px auto; max-width: 550px; opacity:0.9;">Join thousands of electrical professionals using AI to work smarter, safer, and faster — starting today.</p>
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-        <a asp-action="AI_Scanner" asp-controller="Home" class="btn-premium" style="background: white; color: #0B2B26;"><i class="fas fa-bolt"></i> Start AI Scan</a>
-      <a asp-action="Contact" asp-controller="Home" class="btn-premium btn-outline-premium" style="border-color:white; color:white; background:transparent;">Contact Sales →</a>
+    <!-- Why Choose Us -->
+    <div class="values-section">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-tag">WHY ELECTROSCAN AI</span>
+                <h2>Industry-leading technology <br>meets <span class="highlight">electrical expertise</span></h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <div class="value-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>AI-Powered Analysis</h4>
+                    <p>Advanced neural networks trained on millions of electrical scenarios — detecting issues humans routinely miss.</p>
+                </div>
+                <div class="value-card reveal" style="transition-delay: 0.1s;">
+                    <div class="value-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h4>Smart Calculations</h4>
+                    <p>Automated load calculations and wire sizing based on real-world NEC standards. Zero manual math required.</p>
+                </div>
+                <div class="value-card reveal" style="transition-delay: 0.2s;">
+                    <div class="value-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Compliance Reports</h4>
+                    <p>Comprehensive, compliance-ready reports generated instantly — shareable with clients and authorities.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <!-- Leadership Team -->
+    <div class="team-section">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-tag">THE EXPERTS BEHIND THE AI</span>
+                <h2>Leadership & innovation</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h4>Dr. Sarah Chen</h4>
+                    <span class="team-role">CTO, AI Research Lead</span>
+                    <p>15+ years in machine learning and computer vision applied to industrial systems.</p>
+                </div>
+                <div class="team-card reveal" style="transition-delay: 0.1s;">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Michael Rodriguez</h4>
+                    <span class="team-role">Head of Engineering</span>
+                    <p>Licensed Master Electrician with 20+ years designing large-scale electrical systems.</p>
+                </div>
+                <div class="team-card reveal" style="transition-delay: 0.2s;">
+                    <div class="team-avatar">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Emily Watson</h4>
+                    <span class="team-role">Safety Director</span>
+                    <p>Certified Safety Professional, NEC compliance expert and risk auditing specialist.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section about-cta">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to transform your inspections?</h2>
+                <p>Join thousands of electrical professionals using AI to work smarter, safer, and faster — starting today.</p>
+                <div class="cta-actions">
+                    <a asp-action="AI_Scanner" asp-controller="Home" class="btn-primary btn-light">
+                        <i class="fas fa-bolt"></i>
+                        Start AI Scan
+                    </a>
+                    <a asp-action="Contact" asp-controller="Home" class="btn-secondary btn-outline-light">
+                        Contact Sales <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>

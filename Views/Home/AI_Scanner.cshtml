@@ -4,111 +4,129 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>AI Scanner | ElectroScan AI — Intelligent Electrical Analysis</title>
-    <!-- Google Fonts + premium typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="~/js/site.js" defer></script>
 </head>
 <body>
-
-
     <main>
+        <!-- Scanner Hero -->
         <div class="scanner-hero">
             <div class="container">
-                <div class="hero-tag reveal"><i class="fas fa-microchip"></i> AI-POWERED ANALYSIS</div>
-                <h1 class="reveal" style="font-size: 3rem; font-weight: 700; letter-spacing: -0.02em;">Electrical AI Scanner</h1>
-                <p class="reveal" style="color: #5A7568; max-width: 600px; margin-top: 16px;">Upload or capture electrical panel images — our AI detects anomalies, loose connections, overload risks, and generates NEC-compliant reports instantly.</p>
+                <div class="scanner-hero-content reveal">
+                    <div class="hero-badge">
+                        <i class="fas fa-microchip"></i>
+                        AI-POWERED ANALYSIS
+                    </div>
+                    <h1>Electrical AI Scanner</h1>
+                    <p>
+                        Upload or capture electrical panel images — our AI detects anomalies, loose connections, 
+                        overload risks, and generates NEC-compliant reports instantly.
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="container">
-            <!-- Two scanner cards: Camera & Upload -->
+            <!-- Scanner Cards -->
             <div class="scanner-grid reveal">
                 <!-- Camera Card -->
                 <div class="scanner-card">
-                    <div class="card-header-premium">
-                        <h4 style="margin:0;"><i class="fas fa-camera" style="margin-right: 12px;"></i>Live Camera Scan</h4>
+                    <div class="scanner-card-header">
+                        <h4><i class="fas fa-camera"></i> Live Camera Scan</h4>
                     </div>
-                    <div class="card-body-premium">
+                    <div class="scanner-card-body">
                         <div class="camera-preview-area" id="cameraPreviewArea">
-                            <div style="text-align: center; color: rgba(255,255,255,0.7);">
-                                <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 12px; display: block;"></i>
+                            <div class="camera-placeholder">
+                                <i class="fas fa-video"></i>
                                 <p>Camera preview ready</p>
-                                <button class="btn-premium btn-orange" id="startCameraBtn" style="padding: 10px 24px; font-size: 0.85rem;"><span class="blink-dot"></span> Start Camera</button>
+                                <button class="btn-primary btn-orange" id="startCameraBtn">
+                                    <span class="blink-dot"></span>
+                                    Start Camera
+                                </button>
                             </div>
                         </div>
                         <div id="cameraLoading" class="loading-overlay">
                             <div class="spinner-ring"></div>
-                            <p style="color: var(--moss); font-weight: 500;">AI analyzing electrical components...</p>
+                            <p>AI analyzing electrical components...</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Upload Card -->
                 <div class="scanner-card">
-                    <div class="card-header-premium">
-                        <h4 style="margin:0;"><i class="fas fa-upload" style="margin-right: 12px;"></i>Upload Image</h4>
+                    <div class="scanner-card-header">
+                        <h4><i class="fas fa-upload"></i> Upload Image</h4>
                     </div>
-                    <div class="card-body-premium">
+                    <div class="scanner-card-body">
                         <div class="drop-zone" id="dropZone">
-                            <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: var(--moss); margin-bottom: 12px; display: block;"></i>
-                            <p style="font-weight: 500;">Drag & drop electrical panel image</p>
-                            <p style="color: #8AA79A; font-size: 0.8rem;">or</p>
-                            <button class="btn-premium btn-orange" id="uploadBtn" style="padding: 10px 28px; font-size: 0.85rem;"><i class="fas fa-folder-open"></i> Browse Files</button>
-                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="drop-zone-text">Drag & drop electrical panel image</p>
+                            <p class="drop-zone-or">or</p>
+                            <button class="btn-primary btn-orange" id="uploadBtn">
+                                <i class="fas fa-folder-open"></i>
+                                Browse Files
+                            </button>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;" />
                         </div>
                         <div id="uploadLoading" class="loading-overlay">
                             <div class="spinner-ring"></div>
-                            <p style="color: var(--moss);">Processing image with AI vision...</p>
+                            <p>Processing image with AI vision...</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Results Panel (hidden initially) -->
+            <!-- Results Panel -->
             <div id="resultsPanel" class="results-panel reveal">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 28px;">
-                    <h3 style="font-weight: 700;"><i class="fas fa-clipboard-list" style="color: var(--moss); margin-right: 12px;"></i>Analysis Report</h3>
-                    <span style="background: #EFF9F4; padding: 6px 16px; border-radius: 40px; font-size: 0.8rem;">Scan ID: #ESC-2026-0218</span>
+                <div class="results-header">
+                    <h3><i class="fas fa-clipboard-list"></i> Analysis Report</h3>
+                    <span class="results-id">Scan ID: #ESC-2026-0218</span>
                 </div>
 
-                <div style="display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 36px;">
-                    <div style="flex: 1; background: #F9FDFB; border-radius: 24px; padding: 20px; text-align: center;">
-                        <div class="progress-bar-custom" style="width: 100%; margin-bottom: 12px;">
+                <div class="results-metrics">
+                    <div class="metric-card">
+                        <div class="progress-bar">
                             <div class="progress-fill" id="confidenceFill" style="width: 0%;"></div>
                         </div>
-                        <h2 id="confidenceScore" style="font-size: 2rem; font-weight: 700;">0%</h2>
-                        <p style="color: var(--text-muted);">Confidence Score</p>
+                        <h2 id="confidenceScore">0%</h2>
+                        <p>Confidence Score</p>
                     </div>
-                    <div style="flex: 1; background: #F9FDFB; border-radius: 24px; padding: 20px; text-align: center;">
-                        <h2 id="safetyScore" style="font-size: 2rem; font-weight: 700; color: var(--pine);">0</h2>
-                        <p style="color: var(--text-muted);">Safety Score /100</p>
+                    <div class="metric-card">
+                        <h2 id="safetyScore">0</h2>
+                        <p>Safety Score /100</p>
                     </div>
-                    <div style="flex: 1; background: #F9FDFB; border-radius: 24px; padding: 20px; text-align: center;">
+                    <div class="metric-card">
                         <span id="riskBadge" class="risk-badge risk-medium">—</span>
-                        <p style="margin-top: 12px; color: var(--text-muted);">Risk Level</p>
+                        <p>Risk Level</p>
                     </div>
                 </div>
 
-                <h5 style="margin-bottom: 16px;"><i class="fas fa-exclamation-triangle" style="color: var(--electric-orange);"></i> Detected Anomalies</h5>
-                <div id="issuesList"></div>
+                <div class="results-anomalies">
+                    <h5><i class="fas fa-exclamation-triangle"></i> Detected Anomalies</h5>
+                    <div id="issuesList"></div>
+                </div>
 
-                <div style="margin-top: 32px; text-align: center;">
-                    <button class="btn-premium" id="downloadReportBtn" style="background: var(--pine);"><i class="fas fa-download"></i> Download NEC Report</button>
-                    <button class="btn-premium btn-outline-premium" style="margin-left: 12px; background: transparent; border: 1.5px solid var(--border-light);" id="newScanBtn"><i class="fas fa-redo-alt"></i> New Scan</button>
+                <div class="results-actions">
+                    <button class="btn-primary" id="downloadReportBtn">
+                        <i class="fas fa-download"></i>
+                        Download NEC Report
+                    </button>
+                    <button class="btn-secondary" id="newScanBtn">
+                        <i class="fas fa-redo-alt"></i>
+                        New Scan
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="toastMsg" class="toast-message">
-        <i class="fas fa-check-circle" style="color: var(--moss); font-size: 1.3rem;"></i>
+    <div id="toastMsg" class="toast-msg">
+        <i class="fas fa-check-circle"></i>
         <span id="toastText">Analysis complete</span>
     </div>
 
-    <!-- Interactive script for webcam and drag-and-drop upload -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let stream = null;
@@ -135,19 +153,23 @@
             if (startCameraBtn) {
                 startCameraBtn.addEventListener("click", async function () {
                     try {
-                        // Request user camera stream
                         stream = await navigator.mediaDevices.getUserMedia({
                             video: { facingMode: "environment" },
                             audio: false
                         });
 
-                        // Set up video preview inside preview area
                         cameraPreviewArea.innerHTML = `
-                            <div style="position: relative; width: 100%; height: 100%; min-height: 250px; overflow: hidden; border-radius: 16px;">
-                                <video id="webcamVideo" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; background: #000;"></video>
-                                <div style="position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10;">
-                                    <button class="btn-premium" id="captureFrameBtn" style="background: #e67e22; border: none; padding: 10px 20px; font-weight: 600;"><i class="fas fa-camera"></i> Capture Frame</button>
-                                    <button class="btn-premium" id="stopCameraBtn" style="background: rgba(0,0,0,0.6); border: none; padding: 10px 20px;"><i class="fas fa-times"></i> Stop</button>
+                            <div class="camera-active">
+                                <video id="webcamVideo" autoplay playsinline></video>
+                                <div class="camera-controls">
+                                    <button class="btn-primary" id="captureFrameBtn">
+                                        <i class="fas fa-camera"></i>
+                                        Capture Frame
+                                    </button>
+                                    <button class="btn-secondary" id="stopCameraBtn">
+                                        <i class="fas fa-times"></i>
+                                        Stop
+                                    </button>
                                 </div>
                             </div>
                         `;
@@ -155,9 +177,7 @@
                         const video = document.getElementById("webcamVideo");
                         video.srcObject = stream;
 
-                        // Capture frame action
                         document.getElementById("captureFrameBtn").addEventListener("click", function () {
-                            // Play shutter sound or effect
                             showToast("Capturing wire frame...");
                             cameraLoading.style.display = "flex";
 
@@ -167,7 +187,6 @@
                             }, 1500);
                         });
 
-                        // Stop action
                         document.getElementById("stopCameraBtn").addEventListener("click", function () {
                             stopVideoStream();
                             resetCameraArea();
@@ -189,18 +208,20 @@
 
             function resetCameraArea() {
                 cameraPreviewArea.innerHTML = `
-                    <div style="text-align: center; color: rgba(255,255,255,0.7);">
-                        <i class="fas fa-video" style="font-size: 3rem; margin-bottom: 12px; display: block;"></i>
+                    <div class="camera-placeholder">
+                        <i class="fas fa-video"></i>
                         <p>Camera preview ready</p>
-                        <button class="btn-premium btn-orange" id="startCameraBtn" style="padding: 10px 24px; font-size: 0.85rem;"><span class="blink-dot"></span> Start Camera</button>
+                        <button class="btn-primary btn-orange" id="startCameraBtn">
+                            <span class="blink-dot"></span>
+                            Start Camera
+                        </button>
                     </div>
                 `;
-                // Re-bind click event
                 const newBtn = document.getElementById("startCameraBtn");
                 newBtn.addEventListener("click", startCameraBtn.click);
             }
 
-            // Drag and Drop Upload Implementation
+            // Drag and Drop Upload
             if (uploadBtn && fileInput) {
                 uploadBtn.addEventListener("click", function () {
                     fileInput.click();
@@ -216,7 +237,7 @@
             if (dropZone) {
                 dropZone.addEventListener("dragover", function (e) {
                     e.preventDefault();
-                    dropZone.style.borderColor = "var(--primary)";
+                    dropZone.style.borderColor = "var(--brand-600)";
                     dropZone.style.background = "rgba(31, 138, 107, 0.05)";
                 });
 
@@ -244,9 +265,9 @@
                 const reader = new FileReader();
                 reader.onload = function (ev) {
                     dropZone.innerHTML = `
-                        <div style="width: 100%; max-height: 220px; overflow: hidden; border-radius: 12px;">
-                            <img src="${ev.target.result}" style="width: 100%; height: 100%; object-fit: contain; max-height: 220px;">
-                            <p style="margin-top:10px; font-size:0.8rem; color:#8AA79A;">${file.name}</p>
+                        <div class="drop-zone-preview">
+                            <img src="${ev.target.result}" alt="Uploaded panel" />
+                            <p>${file.name}</p>
                         </div>
                     `;
                     uploadLoading.style.display = "flex";
@@ -258,7 +279,7 @@
                 reader.readAsDataURL(file);
             }
 
-            // Simulated AI Scan Analysis Results Generation
+            // Simulated AI Scan Analysis
             function runSimulationAnalysis(isCamera) {
                 if (isCamera) {
                     cameraLoading.style.display = "none";
@@ -266,13 +287,11 @@
                     uploadLoading.style.display = "none";
                 }
 
-                // Make results visible
                 resultsPanel.style.display = "block";
                 resultsPanel.scrollIntoView({ behavior: "smooth" });
 
-                // Random safety values & risk status simulation
-                const confidence = Math.floor(Math.random() * 15) + 82; // 82 - 97%
-                const safety = Math.floor(Math.random() * 25) + 70; // 70 - 95
+                const confidence = Math.floor(Math.random() * 15) + 82;
+                const safety = Math.floor(Math.random() * 25) + 70;
                 
                 let riskText = "LOW";
                 let riskClass = "risk-low";
@@ -297,7 +316,6 @@
                     anomalies = [];
                 }
 
-                // Set values to DOM
                 confidenceScore.innerText = `${confidence}%`;
                 confidenceFill.style.width = `${confidence}%`;
                 safetyScore.innerText = safety;
@@ -305,21 +323,20 @@
                 riskBadge.innerText = riskText;
                 riskBadge.className = `risk-badge ${riskClass}`;
 
-                // Populate anomalies list
                 if (anomalies.length === 0) {
                     issuesList.innerHTML = `
-                        <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 10px; color: #166534;">
-                            <i class="fas fa-check-circle" style="font-size: 1.2rem;"></i>
+                        <div class="anomaly-clean">
+                            <i class="fas fa-check-circle"></i>
                             <span>No major electrical anomalies or compliance violations detected. Your system meets safety parameters.</span>
                         </div>
                     `;
                 } else {
                     issuesList.innerHTML = anomalies.map(issue => `
-                        <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 16px; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 12px;">
-                            <i class="fas fa-exclamation-triangle" style="color: #D97706; font-size: 1.2rem; margin-top: 2px;"></i>
+                        <div class="anomaly-item">
+                            <i class="fas fa-exclamation-triangle"></i>
                             <div>
-                                <strong style="color: #92400E; display: block; font-size: 0.9rem;">${issue.type}</strong>
-                                <span style="color: #B45309; font-size: 0.82rem; line-height:1.4; display:block; margin-top:2px;">${issue.detail}</span>
+                                <strong>${issue.type}</strong>
+                                <span>${issue.detail}</span>
                             </div>
                         </div>
                     `).join("");
@@ -328,20 +345,21 @@
                 showToast("AI Diagnostic Report Generated Successfully! 🎉");
             }
 
-            // New Scan / Redo button action
+            // New Scan
             if (newScanBtn) {
                 newScanBtn.addEventListener("click", function () {
                     resultsPanel.style.display = "none";
                     resetCameraArea();
                     
-                    // Reset upload area
                     dropZone.innerHTML = `
-                        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: var(--moss); margin-bottom: 12px; display: block;"></i>
-                        <p style="font-weight: 500;">Drag & drop electrical panel image</p>
-                        <p style="color: #8AA79A; font-size: 0.8rem;">or</p>
-                        <button class="btn-premium btn-orange" id="uploadBtn" style="padding: 10px 28px; font-size: 0.85rem;"><i class="fas fa-folder-open"></i> Browse Files</button>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="drop-zone-text">Drag & drop electrical panel image</p>
+                        <p class="drop-zone-or">or</p>
+                        <button class="btn-primary btn-orange" id="uploadBtn">
+                            <i class="fas fa-folder-open"></i>
+                            Browse Files
+                        </button>
                     `;
-                    // Re-bind browse click event
                     document.getElementById("uploadBtn").addEventListener("click", function () {
                         fileInput.click();
                     });
@@ -350,12 +368,10 @@
                 });
             }
 
-            // Download PDF Report action
+            // Download Report
             if (downloadReportBtn) {
                 downloadReportBtn.addEventListener("click", function () {
                     showToast("Preparing PDF generation...");
-                    
-                    // Trigger native print flow styled for report
                     window.print();
                 });
             }
@@ -368,10 +384,10 @@
                 text.textContent = msg;
                 if (isError) {
                     icon.className = "fas fa-exclamation-circle";
-                    toast.style.background = "#991B1B";
+                    toast.style.borderLeftColor = "#dc3545";
                 } else {
                     icon.className = "fas fa-check-circle";
-                    toast.style.background = "#0B2B26";
+                    toast.style.borderLeftColor = "var(--brand-500)";
                 }
                 
                 toast.style.display = "flex";

@@ -1,80 +1,77 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Contact Us | ElectroScan AI — Let's Talk Electrical Safety</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <script src="~/js/site.js" defer></script>
-</head>
-<body>
-
-    <main>
-        <!-- Hero -->
-        <div class="contact-hero">
-            <div class="container">
-                <div class="hero-tag reveal"><i class="fas fa-comment-dots"></i> GET IN TOUCH</div>
-                <h1 class="reveal reveal-delay-1">Let's talk about<br>electrical safety</h1>
-                <p class="reveal reveal-delay-2">Have questions about AI-powered inspections? Need a demo? Our team is ready to help you build a smarter, safer electrical workflow.</p>
+<main>
+    <!-- Contact Hero -->
+    <div class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-comment-dots"></i>
+                    GET IN TOUCH
+                </div>
+                <h1>Let's talk about<br>electrical safety</h1>
+                <p>
+                    Have questions about AI-powered inspections? Need a demo? Our team is ready to help 
+                    you build a smarter, safer electrical workflow.
+                </p>
             </div>
         </div>
+    </div>
 
-        <!-- Contact Grid -->
-        <div class="contact-main container">
-            <div class="contact-grid">
+    <!-- Contact Grid -->
+    <div class="contact-main">
+        <div class="container">
+            <div class="contact-layout">
                 <!-- Form -->
-                <div class="contact-form-box reveal">
-                    <h2 style="font-size:1.8rem; margin-bottom:8px; color:var(--pine);">Send us a message</h2>
-                    <p style="color:var(--text-muted); margin-bottom:32px; font-size:0.95rem;">We'll reply within 24 hours.</p>
+                <div class="contact-form-card reveal">
+                    <h2>Send us a message</h2>
+                    <p class="form-subtitle">We'll reply within 24 hours.</p>
                     <form id="contactFormAction">
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="text" id="fullName" placeholder="Full name" required>
+                                <input type="text" id="fullName" placeholder="Full name" required />
                             </div>
                             <div class="form-group">
-                                <input type="email" id="emailAddress" placeholder="Email address" required>
+                                <input type="email" id="emailAddress" placeholder="Email address" required />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <input type="tel" id="phoneNumber" placeholder="Phone number">
+                                <input type="tel" id="phoneNumber" placeholder="Phone number" />
                             </div>
                             <div class="form-group">
-                                <input type="text" id="companyName" placeholder="Company / Organization">
+                                <input type="text" id="companyName" placeholder="Company / Organization" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subjectLine" placeholder="Subject" required>
+                            <input type="text" id="subjectLine" placeholder="Subject" required />
                         </div>
                         <div class="form-group">
                             <textarea rows="5" id="messageContent" placeholder="Tell us about your project or question..." required></textarea>
                         </div>
-                        <button type="submit" class="btn-premium" style="width:100%; justify-content:center;">
-                            <i class="fas fa-paper-plane"></i> Send Message
+                        <button type="submit" class="btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
                         </button>
                     </form>
                 </div>
 
                 <!-- Info Cards -->
-                <div class="contact-info-box">
+                <div class="contact-info-cards">
                     <div class="contact-info-card reveal">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-content">
                             <h4>Visit our HQ</h4>
-                            <p>123 Powertech Drive<br>Suite 400, Houston, TX 77024<br>United States</p>
+                            <p>123 Powertech Drive<br />Suite 400, Houston, TX 77024<br />United States</p>
                         </div>
                     </div>
-                    <div class="contact-info-card reveal reveal-delay-1">
+                    <div class="contact-info-card reveal" style="transition-delay: 0.1s;">
                         <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-content">
                             <h4>Call us directly</h4>
                             <p><a href="tel:+15226056148">+1 (522) 605-6148</a></p>
-                            <p style="font-size:0.8rem; margin-top:2px;">Mon–Fri, 9am – 6pm CST</p>
+                            <p class="info-hours">Mon–Fri, 9am – 6pm CST</p>
                         </div>
                     </div>
-                    <div class="contact-info-card reveal reveal-delay-2">
+                    <div class="contact-info-card reveal" style="transition-delay: 0.2s;">
                         <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <div class="info-content">
                             <h4>Email support</h4>
@@ -82,37 +79,42 @@
                             <p><a href="mailto:support@electroscanai.com">support@electroscanai.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-info-card reveal reveal-delay-3">
+                    <div class="contact-info-card reveal" style="transition-delay: 0.3s;">
                         <div class="info-icon"><i class="fas fa-comment-dots"></i></div>
                         <div class="info-content">
                             <h4>Live chat</h4>
                             <p>Chat with our team now</p>
-                            <span style="display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; color:#2BAA85; margin-top:4px;">
-                                <i class="fas fa-circle" style="font-size:0.45rem;"></i> We're online
+                            <span class="online-badge">
+                                <i class="fas fa-circle"></i>
+                                We're online
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Map Section -->
-        <div class="map-section container reveal">
-            <div class="map-wrapper">
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="container">
+            <div class="map-wrapper reveal">
                 <div class="map-header">
                     <div class="map-header-left">
-                        <div class="map-header-icon"><i class="fas fa-location-dot"></i></div>
+                        <div class="map-icon"><i class="fas fa-location-dot"></i></div>
                         <div class="map-header-text">
                             <h3>ElectroScan AI Headquarters</h3>
                             <p>123 Powertech Drive, Suite 400, Houston, TX 77024</p>
                         </div>
                     </div>
-                    <a href="https://www.google.com/maps/dir//123+Powertech+Dr,+Houston,+TX+77024" target="_blank" rel="noopener" class="map-direction-btn">
-                        <i class="fas fa-diamond-turn-right"></i> Get Directions
+                    <a href="https://www.google.com/maps/dir//123+Powertech+Dr,+Houston,+TX+77024" 
+                       target="_blank" rel="noopener" class="map-direction-btn">
+                        <i class="fas fa-diamond-turn-right"></i>
+                        Get Directions
                     </a>
                 </div>
 
-                <div class="interactive-map-box" id="mapBox">
+                <div class="map-container" id="mapBox">
                     <iframe id="mapIframe"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3465.234!2d-95.5585!3d29.7754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c5e5a5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2sHouston%2C%20TX%2077024!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
                             allowfullscreen=""
@@ -120,7 +122,6 @@
                             referrerpolicy="no-referrer-when-downgrade"
                             title="ElectroScan AI Office Location Map"></iframe>
 
-                    <!-- Fallback if iframe doesn't load -->
                     <div class="map-fallback" id="mapFallback">
                         <i class="fas fa-map-location-dot"></i>
                         <p>Map couldn't load in this browser</p>
@@ -129,10 +130,9 @@
                         </a>
                     </div>
 
-                    <!-- Live status badge -->
-                    <div class="map-badge">
-                        <div class="badge-dot" id="statusDot"></div>
-                        <div class="badge-text" id="statusText">
+                    <div class="map-status">
+                        <div class="status-dot" id="statusDot"></div>
+                        <div class="status-text" id="statusText">
                             Office Open
                             <span>Mon–Fri, 9am – 6pm CST</span>
                         </div>
@@ -140,49 +140,48 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- FAQ -->
-        <div class="faq-section container">
-            <div style="text-align:center; margin-bottom:40px;" class="reveal">
-                <span style="color:#1F8A6B; font-weight:600; font-size:0.85rem; letter-spacing:0.05em;">FAQ</span>
-                <h2 style="font-size:2rem; margin-top:8px; color:var(--pine);">Frequently asked questions</h2>
+    <!-- FAQ -->
+    <div class="faq-section">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="section-tag">FAQ</span>
+                <h2>Frequently asked questions</h2>
             </div>
             <div class="faq-grid">
                 <div class="faq-item reveal">
                     <h4><i class="fas fa-clock"></i> What's your response time?</h4>
                     <p>We typically respond within 2–4 hours during business days. For urgent inquiries, call our support line directly for immediate assistance.</p>
                 </div>
-                <div class="faq-item reveal reveal-delay-1">
+                <div class="faq-item reveal" style="transition-delay: 0.1s;">
                     <h4><i class="fas fa-chalkboard-user"></i> Can I schedule a demo?</h4>
                     <p>Absolutely. Fill out the contact form and mention "demo request" — we'll arrange a personalized walkthrough with our AI inspection specialists.</p>
                 </div>
-                <div class="faq-item reveal reveal-delay-2">
+                <div class="faq-item reveal" style="transition-delay: 0.2s;">
                     <h4><i class="fas fa-shield-halved"></i> Is my data secure?</h4>
                     <p>Yes. We follow enterprise-grade AES-256 encryption and strict privacy protocols. All inspection data is protected and never shared without explicit consent.</p>
                 </div>
             </div>
         </div>
-
-        <!-- CTA -->
-        <div class="container cta-contact reveal">
-            <h2 style="font-size:2rem; position:relative; z-index:1;">Ready to transform your inspections?</h2>
-            <p style="margin:20px auto; max-width:500px; opacity:0.9; position:relative; z-index:1;">Join thousands of electrical professionals using AI to work smarter and safer.</p>
-            <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1;">
-                <a href="ai-scanner.html" class="btn-premium" style="background:white; color:#0B2B26;">
-                    <i class="fas fa-bolt"></i> Start AI Scan
-                </a>
-                <a href="sales.html" class="btn-premium btn-outline-premium" style="border-color:rgba(255,255,255,0.3); color:white; background:transparent;">
-                    Contact Sales <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <!-- Toast notification container -->
-    <div class="toast" id="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Message sent!</span>
     </div>
 
-</body>
-</html>
+    <!-- CTA -->
+    <div class="cta-section contact-cta">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to transform your inspections?</h2>
+                <p>Join thousands of electrical professionals using AI to work smarter and safer.</p>
+                <div class="cta-actions">
+                    <a href="ai-scanner.html" class="btn-primary btn-light">
+                        <i class="fas fa-bolt"></i>
+                        Start AI Scan
+                    </a>
+                    <a href="sales.html" class="btn-secondary btn-outline-light">
+                        Contact Sales <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
