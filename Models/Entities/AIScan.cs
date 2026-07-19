@@ -6,16 +6,22 @@ namespace ElectroScanAI.Models.Entities
     public class AIScan : BaseEntity
     {
         [Required]
-        public string ScanName { get; set; }
+        [MaxLength(300)]
+        public string ScanName { get; set; } = string.Empty;
 
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
-        public string ImagePath { get; set; }
+        [MaxLength(500)]
+        public string ImagePath { get; set; } = string.Empty;
 
-        public ScanRiskLevel RiskLevel { get; set; }
+        public ScanRiskLevel RiskLevel { get; set; } = ScanRiskLevel.Low;
 
-        public string Status { get; set; }
+        [MaxLength(50)]
+        public string Status { get; set; } = "Pending";
+
+        // Analysis result JSON or text
+        public string? ResultSummary { get; set; }
     }
 }

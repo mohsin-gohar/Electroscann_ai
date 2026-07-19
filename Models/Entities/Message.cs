@@ -6,16 +6,17 @@ namespace ElectroScanAI.Models.Entities
     {
         public int SenderId { get; set; }
 
-        public User Sender { get; set; }
+        public User? Sender { get; set; }
 
         public int ReceiverId { get; set; }
 
-        public User Receiver { get; set; }
+        public User? Receiver { get; set; }
 
-        public string MessageText { get; set; }
+        [Required]
+        public string MessageText { get; set; } = string.Empty;
 
-        public bool IsRead { get; set; }
+        public bool IsRead { get; set; } = false;
 
-        public DateTime SentAt { get; set; }
+        public DateTime SentAt { get; set; } = DateTime.UtcNow;
     }
 }

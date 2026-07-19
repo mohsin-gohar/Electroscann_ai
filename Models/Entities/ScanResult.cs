@@ -6,12 +6,14 @@ namespace ElectroScanAI.Models.Entities
     {
         public int AIScanId { get; set; }
 
-        public AIScan AIScan { get; set; }
+        public AIScan? AIScan { get; set; }
 
-        public string DetectedIssue { get; set; }
+        [MaxLength(500)]
+        public string DetectedIssue { get; set; } = string.Empty;
 
-        public string Severity { get; set; }
+        [MaxLength(50)]
+        public string Severity { get; set; } = "Low";
 
-        public string Recommendation { get; set; }
+        public string Recommendation { get; set; } = string.Empty;
     }
 }

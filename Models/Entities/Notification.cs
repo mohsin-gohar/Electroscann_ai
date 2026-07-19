@@ -6,12 +6,17 @@ namespace ElectroScanAI.Models.Entities
     {
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
-        public string Title { get; set; }
+        [Required]
+        [MaxLength(300)]
+        public string Title { get; set; } = string.Empty;
 
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
 
-        public bool IsRead { get; set; }
+        public bool IsRead { get; set; } = false;
+
+        [MaxLength(50)]
+        public string Type { get; set; } = "Info"; // Info, Success, Warning, Danger
     }
 }

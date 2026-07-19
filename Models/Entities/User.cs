@@ -7,17 +7,38 @@ namespace ElectroScanAI.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-        public string PhoneNumber { get; set; }
-        public string City { get; set; }
+
+        [Required]
+        [MaxLength(200)]
+        public string FullName { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(300)]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string PasswordHash { get; set; } = string.Empty;
+
+        [MaxLength(50)]
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        [MaxLength(100)]
+        public string City { get; set; } = string.Empty;
+
         public UserRole Role { get; set; }
-        public DateTime CreatedAt { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
         public DateTime? LastLoginAt { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool EmailVerified { get; set; }
+
+        public bool IsActive { get; set; } = true;
+
+        public bool IsDeleted { get; set; } = false;
+
+        public bool EmailVerified { get; set; } = false;
+
+        [MaxLength(500)]
         public string? ProfileImage { get; set; }
 
         // Navigation

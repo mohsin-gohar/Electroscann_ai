@@ -6,18 +6,21 @@ namespace ElectroScanAI.Models.Entities
     public class Job : BaseEntity
     {
         [Required]
-        public string Title { get; set; }
+        [MaxLength(300)]
+        public string Title { get; set; } = string.Empty;
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
+        [Range(0, 9999999)]
         public decimal Budget { get; set; }
 
-        public string Location { get; set; }
+        [MaxLength(200)]
+        public string Location { get; set; } = string.Empty;
 
-        public JobStatus Status { get; set; }
+        public JobStatus Status { get; set; } = JobStatus.Open;
 
         public int CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public Company? Company { get; set; }
     }
 }

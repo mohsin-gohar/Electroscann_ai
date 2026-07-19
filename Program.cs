@@ -24,8 +24,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
         options.SlidingExpiration = true;
         options.Cookie.HttpOnly = true;
-        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+        // Use SameAsRequest so the app works on both HTTP (dev) and HTTPS (prod)
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
         options.Cookie.SameSite = SameSiteMode.Lax;
+        options.Cookie.Name = "ElectroScanAuth";
     });
 
 // Authorization Policies
@@ -63,9 +65,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();       // Session must come BEFORE authentication
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseSession();
 
 // Routes
 app.MapControllerRoute(
@@ -87,6 +89,11 @@ app.MapControllerRoute(
     name: "company",
     pattern: "Company/{action=Index}/{id?}",
     defaults: new { controller = "CompanyDashboard" });
+
+app.MapControllerRoute(
+    name: "client",
+    pattern: "Client/{action=Index}/{id?}",
+    defaults: new { controller = "ClientDashboard" });
 
 app.MapControllerRoute(
     name: "default",

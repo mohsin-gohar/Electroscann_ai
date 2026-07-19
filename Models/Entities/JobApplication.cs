@@ -6,14 +6,15 @@ namespace ElectroScanAI.Models.Entities
     {
         public int JobId { get; set; }
 
-        public Job Job { get; set; }
+        public Job? Job { get; set; }
 
         public int ElectricianId { get; set; }
 
-        public Electrician Electrician { get; set; }
+        public Electrician? Electrician { get; set; }
 
-        public string CoverLetter { get; set; }
+        public string CoverLetter { get; set; } = string.Empty;
 
-        public string Status { get; set; }
+        [MaxLength(50)]
+        public string Status { get; set; } = "Pending";
     }
 }

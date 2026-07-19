@@ -7,14 +7,14 @@ namespace ElectroScanAI.Models.Entities
     {
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
-        public SubscriptionPlan Plan { get; set; }
+        public SubscriptionPlan Plan { get; set; } = SubscriptionPlan.Free;
 
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime EndDate { get; set; }
+        public DateTime EndDate { get; set; } = DateTime.UtcNow.AddMonths(1);
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

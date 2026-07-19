@@ -5,6 +5,7 @@ namespace ElectroScanAI.Models.Enums
         Open,
         InProgress,
         Completed,
-        Cancelled
+        Cancelled,
+        Filled
     }
 }

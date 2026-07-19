@@ -6,14 +6,15 @@ namespace ElectroScanAI.Models.Entities
     {
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public double Load { get; set; }
 
         public double Distance { get; set; }
 
-        public string WireSize { get; set; }
+        [MaxLength(50)]
+        public string WireSize { get; set; } = string.Empty;
 
-        public string Result { get; set; }
+        public string Result { get; set; } = string.Empty;
     }
 }

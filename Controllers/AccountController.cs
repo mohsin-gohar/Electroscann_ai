@@ -1,4 +1,4 @@
-﻿using ElectroScanAI.Models.Entities;
+using ElectroScanAI.Models.Entities;
 using ElectroScanAI.Models.Enums;
 using Electroscann_ai.Data;
 using Electroscann_ai.Models;
@@ -297,8 +297,8 @@ namespace Electroscann_ai.Controllers
         // ========== HELPER METHODS ==========
         private bool VerifyPassword(string hashedPassword, string password)
         {
-            var result = _passwordHasher.VerifyHashedPassword(null, hashedPassword, password);
-            return result == PasswordVerificationResult.Success;
+            var result = _passwordHasher.VerifyHashedPassword(new User(), hashedPassword, password);
+            return result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded;
         }
 
         private string GetDashboardAction(UserRole role)

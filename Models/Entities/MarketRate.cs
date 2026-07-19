@@ -4,14 +4,20 @@ namespace ElectroScanAI.Models.Entities
 {
     public class MarketRate : BaseEntity
     {
-        public string ItemName { get; set; }
+        [Required]
+        [MaxLength(300)]
+        public string ItemName { get; set; } = string.Empty;
 
-        public string Category { get; set; }
+        [MaxLength(100)]
+        public string Category { get; set; } = string.Empty;
 
+        [Range(0, 9999999)]
         public decimal Price { get; set; }
 
-        public string Unit { get; set; }
+        [MaxLength(50)]
+        public string Unit { get; set; } = string.Empty;
 
-        public string City { get; set; }
+        [MaxLength(100)]
+        public string City { get; set; } = string.Empty;
     }
 }
